@@ -1,0 +1,71 @@
+package springmvc.webapp.OCP6.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="longueur")
+public class Longueur {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private int Id;
+	
+	@Column(name="valeur")
+	private double valeur;
+	
+	@Column(name="relai")
+	private double relai;
+	
+	@Column(name="cotation")
+	private String cotation;
+	
+	public Longueur() {}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public double getValeur() {
+		return valeur;
+	}
+
+	public void setValeur(double valeur) {
+		this.valeur = valeur;
+	}
+
+	public double getRelai() {
+		return relai;
+	}
+
+	public void setRelai(double relai) {
+		this.relai = relai;
+	}
+
+	public String getCotation() {
+		return cotation;
+	}
+
+	public void setCotation(String cotation) {
+		this.cotation = cotation;
+	}
+
+	@Override
+	public String toString() {
+		return "Longueur [Id=" + Id + ", valeur=" + valeur + ", relai=" + relai + ", cotation=" + cotation + "]";
+	}
+	
+	
+	
+
+}
