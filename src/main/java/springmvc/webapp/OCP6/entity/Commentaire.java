@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -20,14 +22,22 @@ public class Commentaire {
 	@Column(name="comment_id")
 	private int commentId;
 	
-	@Column(name="user_id")
-	private String userId;
 	
 	@Column(name="date")
 	private Date date;
 	
 	@Column(name="contenu")
 	private String contenu;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="spot_id")
+	Spot spot;
+	
+	@ManyToOne
+	@JoinColumn(name="utilisateurpk")
+	Utilisateur utilisateur;
+	
 	
 	public Commentaire() {}
 	
@@ -43,14 +53,6 @@ public class Commentaire {
 
 
 
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public Date getDate() {
 		return date;
@@ -72,7 +74,7 @@ public class Commentaire {
 
 	@Override
 	public String toString() {
-		return "Commentaire [commentId=" + commentId + ", userId=" + userId + ", date=" + date + ", contenu=" + contenu
+		return "Commentaire [commentId=" + commentId + ", date=" + date + ", contenu=" + contenu
 				+ "]";
 	}
 	

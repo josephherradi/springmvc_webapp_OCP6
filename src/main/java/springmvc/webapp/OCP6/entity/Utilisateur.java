@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -31,6 +33,18 @@ public class Utilisateur {
 	
 	@Column(name="user_type")
 	private String userType;
+	
+	@OneToMany
+	Spot spot;
+	
+	@OneToMany
+	Commentaire commentaire;
+	
+	@OneToMany
+	Utilisateur utilisateur;
+	
+	@ManyToMany
+	Reservation reservation;
 	
 	public Utilisateur() {}
 
