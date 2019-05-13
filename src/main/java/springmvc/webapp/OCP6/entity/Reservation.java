@@ -22,19 +22,14 @@ public class Reservation {
 	@Column(name="statut")
 	private String statut;
 	
-	@Column(name="asker")
-	private Utilisateur asker;
-	
-	@Column(name="owner")
-	private Utilisateur owner;
 	
 	@ManyToOne
 	@JoinColumn(name="topo_id")
-	Topo topo;
+	private Topo topo;
 	
 	@ManyToOne
 	@JoinColumn(name="utilisateur_pk")
-	Utilisateur utilisateur;
+	private Utilisateur utilisateur;
 	
 	
 	public Reservation(){
@@ -56,27 +51,11 @@ public class Reservation {
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
-
-	public Utilisateur getAsker() {
-		return asker;
-	}
-
-	public void setAsker(Utilisateur asker) {
-		this.asker = asker;
-	}
-
-	public Utilisateur getOwner() {
-		return owner;
-	}
-
-	public void setOwner(Utilisateur owner) {
-		this.owner = owner;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Reservation [reservationId=" + reservationId + ", statut=" + statut + ", asker=" + asker + ", owner="
-				+ owner + "]";
+		return "Reservation [reservationId=" + reservationId + ", statut=" + statut + "]";
 	}
 	
 	

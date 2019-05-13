@@ -31,7 +31,7 @@ public class Voie {
 	
 	@ManyToOne
 	@JoinColumn(name="spot_id")
-	Spot spot;
+	private Spot spot;
 	
 	public Voie() {}
 

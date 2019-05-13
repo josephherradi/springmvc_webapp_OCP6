@@ -31,7 +31,7 @@ public class Longueur {
 	
 	@ManyToOne
 	@JoinColumn(name="voie_id")
-	Voie voie;
+	private Voie voie;
 	
 	
 	public Longueur() {}

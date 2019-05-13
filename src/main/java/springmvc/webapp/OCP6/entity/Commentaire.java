@@ -32,11 +32,11 @@ public class Commentaire {
 	
 	@ManyToOne
 	@JoinColumn(name="spot_id")
-	Spot spot;
+	private Spot spot;
 	
 	@ManyToOne
 	@JoinColumn(name="utilisateur_pk")
-	Utilisateur utilisateur;
+	private Utilisateur utilisateur;
 	
 	
 	public Commentaire() {}

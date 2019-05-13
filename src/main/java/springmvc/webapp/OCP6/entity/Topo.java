@@ -41,7 +41,7 @@ public class Topo {
 	
 	@ManyToOne
 	@JoinColumn(name="utilisateur_pk")
-	Utilisateur utilisateur;
+	private Utilisateur utilisateur;
 	
 	
 	public Topo() {}

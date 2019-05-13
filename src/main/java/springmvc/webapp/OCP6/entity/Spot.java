@@ -50,7 +50,7 @@ public class Spot {
 	
 	@ManyToOne
 	@JoinColumn(name="utilisateur_pk")
-	Utilisateur utilisateur;
+	private Utilisateur utilisateur;
 
 	public Spot(){
 		
