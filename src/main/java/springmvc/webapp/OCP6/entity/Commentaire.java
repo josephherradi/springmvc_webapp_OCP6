@@ -35,7 +35,7 @@ public class Commentaire {
 	Spot spot;
 	
 	@ManyToOne
-	@JoinColumn(name="utilisateurpk")
+	@JoinColumn(name="utilisateur_pk")
 	Utilisateur utilisateur;
 	
 	

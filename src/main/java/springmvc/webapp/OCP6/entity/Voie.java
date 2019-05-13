@@ -33,9 +33,6 @@ public class Voie {
 	@JoinColumn(name="spot_id")
 	Spot spot;
 	
-	@OneToMany
-	Longueur longueur;
-	
 	public Voie() {}
 
 	public int getVoieId() {

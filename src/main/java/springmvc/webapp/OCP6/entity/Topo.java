@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -41,11 +40,9 @@ public class Topo {
 	private String ownerId;
 	
 	@ManyToOne
-	@JoinColumn(name="utilisateurpk")
+	@JoinColumn(name="utilisateur_pk")
 	Utilisateur utilisateur;
 	
-	@OneToMany
-	Reservation reservation;
 	
 	public Topo() {}
 

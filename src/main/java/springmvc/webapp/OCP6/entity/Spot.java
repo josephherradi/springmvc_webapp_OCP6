@@ -47,14 +47,9 @@ public class Spot {
 	@Column(name="tagged")
 	private Boolean tagged;
 	
-	@OneToMany
-	Voie voie;
-	
-	@OneToMany
-	Commentaire commentaire;
 	
 	@ManyToOne
-	@JoinColumn(name="utilisateurpk")
+	@JoinColumn(name="utilisateur_pk")
 	Utilisateur utilisateur;
 
 	public Spot(){
