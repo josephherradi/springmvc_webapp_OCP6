@@ -20,7 +20,7 @@ public class SpotDAOImpl implements SpotDAO{
 	public List<Spot> getSpots(){
 		Session currentSession = sessionFactory.getCurrentSession();
 
-		Query<Spot> query = currentSession.createNamedQuery("FindAll", 
+		Query<Spot> query = currentSession.createNamedQuery("FindAllspots", 
 				  Spot.class);
 		List<Spot> ResultList = query.getResultList();
 		

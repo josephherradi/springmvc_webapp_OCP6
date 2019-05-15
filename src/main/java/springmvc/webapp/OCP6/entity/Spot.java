@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="spot")
 @org.hibernate.annotations.NamedQueries({
-    @org.hibernate.annotations.NamedQuery(name = "FindAll", 
+    @org.hibernate.annotations.NamedQuery(name = "FindAllspots", 
       query = "from Spot"),
 })
 
