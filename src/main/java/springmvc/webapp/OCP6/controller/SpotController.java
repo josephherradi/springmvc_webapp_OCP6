@@ -16,17 +16,17 @@ import springmvc.webapp.OCP6.service.SpotService;
 @Controller
 @RequestMapping("/spot")
 public class SpotController {
-	
+
 	@Autowired
 	private SpotService spotService;
 
 	@GetMapping("/list")
 	public String listSpots(Model theModel) {
-	List<Spot> theSpots = spotService.getSpots();
-	theModel.addAttribute("spots", theSpots);
-	return "list-spots";
-		
+		List<Spot> thespots= spotService.getSpots();
+		theModel.addAttribute("spots", thespots);
+		return "list-spots";
+
 	}
-	
-	
+
+
 }

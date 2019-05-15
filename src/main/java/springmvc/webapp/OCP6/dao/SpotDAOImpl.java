@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,10 +18,12 @@ public class SpotDAOImpl implements SpotDAO{
 	
 	@Override
 	public List<Spot> getSpots(){
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		Query<Spot> query = currentSession.createNamedQuery("FindAll", 
+				  Spot.class);
+		List<Spot> ResultList = query.getResultList();
 		
-		
-		
-		List<Spot> ResultList = null;
 		return ResultList;
 	}
 

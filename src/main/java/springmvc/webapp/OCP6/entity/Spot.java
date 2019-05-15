@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -16,6 +15,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="spot")
+@org.hibernate.annotations.NamedQueries({
+    @org.hibernate.annotations.NamedQuery(name = "FindAll", 
+      query = "from Spot"),
+})
+
 public class Spot {
 	
 	@Id
