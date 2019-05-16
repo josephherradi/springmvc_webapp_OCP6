@@ -7,12 +7,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 
 @Entity
 @Table(name="voie")
+@NamedQueries({
+@NamedQuery(name = "FindVoies", query = "from Voie"),
+})
+
+
+
 public class Voie {
 	
 	@Id

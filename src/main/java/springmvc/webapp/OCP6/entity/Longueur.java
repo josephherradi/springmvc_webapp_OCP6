@@ -9,10 +9,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 
 
 @Entity
 @Table(name="longueur")
+@NamedQueries({
+@NamedQuery(name = "FindLongueurs", query = "from Longueur"),
+})
+
 public class Longueur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

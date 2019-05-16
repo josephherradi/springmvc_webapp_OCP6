@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import springmvc.webapp.OCP6.dao.VoieDAO;
-import springmvc.webapp.OCP6.entity.Spot;
 import springmvc.webapp.OCP6.entity.Voie;
 
 
@@ -31,7 +30,7 @@ public class VoieServiceImpl implements VoieService {
 
 	@Override
 	@Transactional
-	public Spot getVoie(int theId) {
+	public Voie getVoie(int theId) {
 		return voieDAO.getVoie(theId);
 	}
 

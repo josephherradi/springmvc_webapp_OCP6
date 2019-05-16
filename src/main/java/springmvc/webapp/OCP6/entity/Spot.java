@@ -10,14 +10,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 
 
 
 @Entity
 @Table(name="spot")
-@org.hibernate.annotations.NamedQueries({
-    @org.hibernate.annotations.NamedQuery(name = "FindAllspots", 
-      query = "from Spot"),
+@NamedQueries({
+@NamedQuery(name = "FindAllspots", query = "from Spot"),
 })
 
 public class Spot {
@@ -140,11 +142,4 @@ public class Spot {
 				+ ", nbrSecteurs=" + nbrSecteurs + ", nbrVoies=" + nbrVoies + ", voieEquipee=" + voieEquipee
 				+ ", dateAjout=" + dateAjout + ", tagged=" + tagged + "]";
 	}
-
-	
-	
-	
-	
-	
-
 }
