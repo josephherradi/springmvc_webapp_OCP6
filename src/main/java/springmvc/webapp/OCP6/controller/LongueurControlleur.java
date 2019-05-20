@@ -23,34 +23,35 @@ public class LongueurControlleur {
 	public String listLongueurs(Model theModel) {
 		List<Longueur> lesLongueurs= longueurService.getLongueurs();
 		theModel.addAttribute("longueurs", lesLongueurs);
-		return "list-spots";
+		return "list-longueurs";
 	}
 	
 	@GetMapping("/showFormLongueur")
 	public String showFormForAdd(Model theModel) {
 		Longueur laLongueur=new Longueur();
 		theModel.addAttribute("longueur", laLongueur);
-		return "spot-form";
+		return "longueur-form";
 	}
 	
-	@PostMapping("/saveLongeur")
+	@PostMapping("/saveLongueur")
 	public String saveVoie(@ModelAttribute("longueur") Longueur laLongueur) {
 		longueurService.saveLongueur(laLongueur);
-		return "redirect:/spot/list";
+		return "redirect:/longueur/list";
 	}
+	
 	
 	@GetMapping("/updateFormLongueur")
 	public String showFormForUpdate(@RequestParam("longueurId") int theId,
 									Model theModel) {
 		Longueur laLongueur=longueurService.getLongueur(theId);	
 		theModel.addAttribute("longueur", laLongueur);
-		return "spot-form";
+		return "longueur-form";
 	}
 	
 	@GetMapping("/deleteLongueur")
 	public String deleteLongueur(@RequestParam("longueurId") int theId) {
 		longueurService.deleteLongueur(theId);
-		return "redirect:/spot/list";
+		return "redirect:/longueur/list";
 	}
 	
 

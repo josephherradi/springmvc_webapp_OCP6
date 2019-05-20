@@ -24,34 +24,36 @@ public class VoieController {
 	public String listVoies(Model theModel) {
 		List<Voie> lesVoies= voieService.getVoies();
 		theModel.addAttribute("voies", lesVoies);
-		return "list-spots";
+		return "list-voies";
 	}
 	
 	@GetMapping("/showFormVoie")
 	public String showFormForAdd(Model theModel) {
 		Voie laVoie=new Voie();
 		theModel.addAttribute("voie", laVoie);
-		return "spot-form";
+		return "voie-form";
 	}
 	
 	@PostMapping("/saveVoie")
 	public String saveVoie(@ModelAttribute("voie") Voie laVoie) {
-		voieService.saveVoie(laVoie);;
-		return "redirect:/spot/list";
+		voieService.saveVoie(laVoie);
+		return "redirect:/voie/list";
 	}
+	
+
 	
 	@GetMapping("/updateFormVoie")
 	public String showFormForUpdate(@RequestParam("voieId") int theId,
 									Model theModel) {
 		Voie laVoie=voieService.getVoie(theId);	
 		theModel.addAttribute("voie", laVoie);
-		return "spot-form";
+		return "voie-form";
 	}
 	
 	@GetMapping("/deleteVoie")
 	public String deleteSpot(@RequestParam("voieId") int theId) {
 		voieService.deleteVoie(theId);;
-		return "redirect:/spot/list";
+		return "redirect:/voie/list";
 	}
 	
 

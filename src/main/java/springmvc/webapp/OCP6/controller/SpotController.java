@@ -23,6 +23,7 @@ public class SpotController {
 	@Autowired
 	private SpotService spotService;
 
+
 	@GetMapping("/list")
 	public String listSpots(Model theModel) {
 		List<Spot> thespots= spotService.getSpots();
@@ -42,6 +43,7 @@ public class SpotController {
 		spotService.saveSpot(theSpot);
 		return "redirect:/spot/list";
 	}
+	
 	
 	@GetMapping("/updateForm")
 	public String showFormForUpdate(@RequestParam("spotId") int theId,
