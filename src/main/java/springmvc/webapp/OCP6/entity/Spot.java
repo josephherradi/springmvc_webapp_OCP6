@@ -1,17 +1,22 @@
 package springmvc.webapp.OCP6.entity;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
+
 
 
 
@@ -58,6 +63,12 @@ public class Spot {
 	@JoinColumn(name="utilisateur_pk")
 	private Utilisateur utilisateur;
 
+	
+	@OneToMany(targetEntity=Voie.class, mappedBy="spot",cascade=CascadeType.ALL)
+	@ElementCollection(targetClass=Voie.class)
+	public List<Voie> voies;
+		
+	
 	public Spot(){
 		
 	}
