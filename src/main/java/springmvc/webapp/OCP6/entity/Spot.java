@@ -20,7 +20,6 @@ import org.hibernate.annotations.NamedQuery;
 
 
 
-
 @Entity
 @Table(name="spot")
 @NamedQueries({

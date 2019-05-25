@@ -5,48 +5,42 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Spot lists</title>
+<title>voie lists</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
-			<br> <input type="button" value="Add Spot"
+			<br> <input type="button" value="Add voie"
 				onclick="window.location.href='showForm'; return false;"
 				class="btn btn-primary" /> <br>
-			<h2>Liste des spots</h2>
+			<h2>Liste des voies</h2>
 
 				<table class="table table-striped table-bordered">
 					<tr>
-						<th>name</th>
-						<th>description</th>
-						<th>lieu</th>
-						<th>nombre secteurs</th>
-						<th>nombre voies</th>
-						<th>voie equipee</th>
+						<th>nbr Longueurs</th>
+						<th>distance Spits</th>
+						<th>remarques</th>
 
 
 
 
 					</tr>
 
-					<c:forEach var="tempSpot" items="${spots}">
+					<c:forEach var="tempVoie" items="${voies}">
 
-						<c:url var="updateLink" value="/spots/updateForm">
-							<c:param name="spotId" value="${tempSpot.spotId}" />
+						<c:url var="updateLink" value="updateForm">
+							<c:param name="voieId" value="${tempVoie.voieId}" />
 						</c:url>
 
-						<c:url var="deleteLink" value="/spots/delete">
-							<c:param name="spotId" value="${tempSpot.spotId}" />
+						<c:url var="deleteLink" value="delete">
+							<c:param name="voieId" value="${tempVoie.voieId}" />
 						</c:url>
 						<tr>
-							<td>${tempSpot.spotName}</td>
-							<td>${tempSpot.description}</td>
-							<td>${tempSpot.lieu}</td>
-							<td>${tempSpot.nbrSecteurs}</td>
-							<td>${tempSpot.nbrVoies}</td>
-							<td>${tempSpot.voieEquipee}</td>
+							<td>${tempVoie.nbrLongueurs}</td>
+							<td>${tempVoie.distanceSpits}</td>
+							<td>${tempVoie.remarques}</td>
 							<td><a href="${updateLink}">Update</a> 
 								<a href="${deleteLink}"
 								

@@ -21,7 +21,7 @@
 			
 			
 			
-				<form:form action="saveSpot" cssClass="form-horizontal"
+				<form:form action="saveForm" cssClass="form-horizontal"
 					method="post" modelAttribute="spot">
 					<h2>Spot</h2>
 
@@ -65,12 +65,12 @@
 							<form:input path="voieEquipee" cssClass="form-control" />
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="dateAjout" class="col-md-3 control-label">date Ajout</label>
-						<div class="col-md-9">
-							<form:input path="dateAjout" cssClass="form-control" />
-						</div>
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="dateAjout" class="col-md-3 control-label">date Ajout</label> -->
+<!-- 						<div class="col-md-9"> -->
+<%-- 							<form:input path="dateAjout" cssClass="form-control" /> --%>
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="form-group">
 						<label for="tagged" class="col-md-3 control-label">label tagged</label>
 						<div class="col-md-9">

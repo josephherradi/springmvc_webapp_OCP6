@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import springmvc.webapp.OCP6.controller.VoieController;
 import springmvc.webapp.OCP6.entity.Voie;
 
 
@@ -18,11 +19,12 @@ public class VoieDAOImpl implements VoieDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<Voie> getVoies() {
+	public List<Voie> getVoies(int spotId) {
 		Session currentSession = sessionFactory.getCurrentSession();
 
 		Query<Voie> query = currentSession.createNamedQuery("FindVoies", 
 				  Voie.class);
+		query.setParameter("theSpotId",spotId);
 		List<Voie> ResultList = query.getResultList();
 		
 		return ResultList;

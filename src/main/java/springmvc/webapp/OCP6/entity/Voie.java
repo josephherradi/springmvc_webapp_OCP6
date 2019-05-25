@@ -21,7 +21,8 @@ import org.hibernate.annotations.NamedQuery;
 @Entity
 @Table(name="voie")
 @NamedQueries({
-@NamedQuery(name = "FindVoies", query = "from Voie"),
+@NamedQuery(name = "FindVoies", query = "from Voie as v where v.spot.spotId= :theSpotId")
+
 })
 
 

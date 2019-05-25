@@ -18,8 +18,8 @@ public class VoieServiceImpl implements VoieService {
 	
 	@Override
 	@Transactional
-	public List<Voie> getVoies() {
-		return voieDAO.getVoies();
+	public List<Voie> getVoies(int spotId) {
+		return voieDAO.getVoies(spotId);
 	}
 
 	@Override

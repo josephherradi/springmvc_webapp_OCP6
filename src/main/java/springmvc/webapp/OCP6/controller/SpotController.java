@@ -5,10 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import springmvc.webapp.OCP6.entity.Spot;
@@ -17,35 +16,38 @@ import springmvc.webapp.OCP6.service.SpotService;
 
 
 @Controller
-@RequestMapping("/spot")
+@RequestMapping("/spots")
 public class SpotController {
 
 	@Autowired
 	private SpotService spotService;
 
 
-	@GetMapping("/list")
+	@RequestMapping(value="list", method= RequestMethod.GET)
 	public String listSpots(Model theModel) {
 		List<Spot> thespots= spotService.getSpots();
 		theModel.addAttribute("spots", thespots);
 		return "list-spots";
 	}
 	
-	@GetMapping("/showForm")
+	
+	
+	@RequestMapping(value="showForm",method = RequestMethod.GET)
 	public String showFormForAdd(Model theModel) {
 		Spot theSpot=new Spot();
 		theModel.addAttribute("spot", theSpot);
 		return "spot-form";
 	}
+
 	
-	@PostMapping("/saveSpot")
+	@RequestMapping(value="saveForm",method=RequestMethod.POST)
 	public String saveSpot(@ModelAttribute("spot") Spot theSpot) {
 		spotService.saveSpot(theSpot);
-		return "redirect:/spot/list";
+		return "redirect:/spots/list";
 	}
 	
 	
-	@GetMapping("/updateForm")
+	@RequestMapping(value="updateForm",method=RequestMethod.GET)
 	public String showFormForUpdate(@RequestParam("spotId") int theId,
 									Model theModel) {
 		Spot theSpot=spotService.getSpot(theId);	
@@ -53,10 +55,10 @@ public class SpotController {
 		return "spot-form";
 	}
 	
-	@GetMapping("/delete")
-	public String deleteSpot(@RequestParam("spotId") int theId) {
+	@RequestMapping(value="delete",method=RequestMethod.GET)
+	public  String deleteSpot(@RequestParam("spotId") int theId)  {
 		spotService.deleteSpot(theId);
-		return "redirect:/spot/list";
+		return "redirect:/spots/list";
 	}
 	
 	
