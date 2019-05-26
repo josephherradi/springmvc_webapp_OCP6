@@ -24,8 +24,8 @@ public class VoieServiceImpl implements VoieService {
 
 	@Override
 	@Transactional
-	public void saveVoie(Voie laVoie) {
-		voieDAO.saveVoie(laVoie);
+	public void saveVoie(Voie laVoie, int spotId) {
+		voieDAO.saveVoie(laVoie,spotId);
 	}
 
 	@Override

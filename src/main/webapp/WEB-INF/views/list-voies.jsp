@@ -44,7 +44,7 @@
 							<td><a href="${updateLink}">Update</a> 
 								<a href="${deleteLink}"
 								
-								onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a>
+								onclick="if (!(confirm('Are you sure you want to delete cette voie?'))) return false">Delete</a>
 							</td>
 
 						</tr>

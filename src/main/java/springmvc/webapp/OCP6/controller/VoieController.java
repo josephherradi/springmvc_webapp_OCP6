@@ -29,6 +29,7 @@ public class VoieController {
 	private VoieService voieService;
 	
 	
+	
 
 
 	@RequestMapping(value="{spotId}/voies/list",method= RequestMethod.GET)
@@ -47,7 +48,7 @@ public class VoieController {
 	
 	@RequestMapping(value="{spotId}/voies/save",method= RequestMethod.POST)
 	public String saveVoie(@RequestParam(value="spotId",required=true,defaultValue="2") int spotId,@ModelAttribute("voie") Voie laVoie) {
-		voieService.saveVoie(laVoie);
+		voieService.saveVoie(laVoie,spotId);
 		return "redirect:list";
 	}
 	
