@@ -38,6 +38,9 @@ public class SpotServiceImpl implements SpotService {
 	}
 
 
+	
+
+
 
 	
 	
