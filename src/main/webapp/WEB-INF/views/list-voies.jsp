@@ -12,44 +12,48 @@
 <body>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
+			<br>
+			<p>
+				<button type="button" name="back" onclick="history.back()">back</button>
+
+			</p>
 			<br> <input type="button" value="Add voie"
 				onclick="window.location.href='showForm'; return false;"
 				class="btn btn-primary" /> <br>
 			<h2>Liste des voies</h2>
 
-				<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered">
+				<tr>
+					<th>nbr Longueurs</th>
+					<th>distance Spits</th>
+					<th>remarques</th>
+
+
+
+
+				</tr>
+
+				<c:forEach var="tempVoie" items="${voies}">
+
+					<c:url var="updateLink" value="updateForm">
+						<c:param name="voieId" value="${tempVoie.voieId}" />
+					</c:url>
+
+					<c:url var="deleteLink" value="delete">
+						<c:param name="voieId" value="${tempVoie.voieId}" />
+					</c:url>
 					<tr>
-						<th>nbr Longueurs</th>
-						<th>distance Spits</th>
-						<th>remarques</th>
-
-
-
+						<td>${tempVoie.nbrLongueurs}</td>
+						<td>${tempVoie.distanceSpits}</td>
+						<td>${tempVoie.remarques}</td>
+						<td><a href="${updateLink}">Update</a>|<a
+							href="${deleteLink}"
+							onclick="if (!(confirm('Are you sure you want to delete cette voie?'))) return false">Delete</a>
+						</td>
 
 					</tr>
-
-					<c:forEach var="tempVoie" items="${voies}">
-
-						<c:url var="updateLink" value="updateForm">
-							<c:param name="voieId" value="${tempVoie.voieId}" />
-						</c:url>
-
-						<c:url var="deleteLink" value="delete">
-							<c:param name="voieId" value="${tempVoie.voieId}" />
-						</c:url>
-						<tr>
-							<td>${tempVoie.nbrLongueurs}</td>
-							<td>${tempVoie.distanceSpits}</td>
-							<td>${tempVoie.remarques}</td>
-							<td><a href="${updateLink}">Update</a> 
-								<a href="${deleteLink}"
-								
-								onclick="if (!(confirm('Are you sure you want to delete cette voie?'))) return false">Delete</a>
-							</td>
-
-						</tr>
-					</c:forEach>
-				</table>
+				</c:forEach>
+			</table>
 
 		</div>
 	</div>

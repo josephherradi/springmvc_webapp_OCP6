@@ -41,9 +41,9 @@ public class VoieController {
 		return "voie-form";
 	}
 	
-	@RequestMapping(value="{spotId}/voies/save",method= RequestMethod.POST)
+	@RequestMapping(value="{spotId}/voies/saveOrUpdate",method= RequestMethod.POST)
 	public String saveVoie(@PathVariable("spotId") int spotId,@ModelAttribute("voie") Voie laVoie) {
-		voieService.saveVoie(laVoie,spotId);
+		voieService.saveOrUpdateVoie(laVoie,spotId);
 		return "redirect:list";
 	}
 	

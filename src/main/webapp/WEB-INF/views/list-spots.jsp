@@ -12,6 +12,7 @@
 <body>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
+
 			<br> <input type="button" value="Add Spot"
 				onclick="window.location.href='showForm'; return false;"
 				class="btn btn-primary" /> <br>
@@ -40,6 +41,10 @@
 						<c:url var="deleteLink" value="/spots/delete">
 							<c:param name="spotId" value="${tempSpot.spotId}" />
 						</c:url>
+						
+						<c:url var="detailsLink" value="/spots/${tempSpot.spotId}/voies/list">
+						</c:url>
+							
 						<tr>
 							<td>${tempSpot.spotName}</td>
 							<td>${tempSpot.description}</td>
@@ -52,6 +57,8 @@
 								
 								onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a>
 							</td>
+							<td><a href="${detailsLink}">Détails</a> </td>
+							
 
 						</tr>
 					</c:forEach>

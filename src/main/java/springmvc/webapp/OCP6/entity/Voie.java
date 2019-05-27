@@ -87,6 +87,14 @@ public class Voie {
 		this.remarques = remarques;
 	}
 
+	public Spot getSpot() {
+		return spot;
+	}
+
+	public void setSpot(Spot spot) {
+		this.spot = spot;
+	}
+
 	@Override
 	public String toString() {
 		return "Voie [voieId=" + voieId + ", nbrLongueurs=" + nbrLongueurs + ", distanceSpits=" + distanceSpits

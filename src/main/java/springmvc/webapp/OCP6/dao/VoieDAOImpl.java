@@ -9,13 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import springmvc.webapp.OCP6.controller.VoieController;
+import springmvc.webapp.OCP6.entity.Spot;
 import springmvc.webapp.OCP6.entity.Voie;
+import springmvc.webapp.OCP6.service.SpotService;
 
 @Repository
 public class VoieDAOImpl implements VoieDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Autowired
+	private SpotService spotService;
 
 	@Override
 	public List<Voie> getVoies(int spotId) {
@@ -29,20 +33,11 @@ public class VoieDAOImpl implements VoieDAO {
 	}
 
 	@Override
-	public void saveVoie(Voie laVoie, int spotId) {
+	public void saveOrUpdateVoie(Voie laVoie, int spotId) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<Voie> query = currentSession.createNativeQuery(
-				"INSERT INTO VOIE "
-						+ "	(nbr_longueurs,distance_spits,remarques,spot_id) VALUES (:Lenbrlongueurs,:Ladistancespits,:Lesremarques,:theSpotId)",
-				Voie.class);
-		int nbrLongueurs=laVoie.getNbrLongueurs();
-		double distanceSpits=laVoie.getDistanceSpits();
-		String remarques= laVoie.getRemarques();
-		query.setParameter("Lenbrlongueurs",  nbrLongueurs);
-		query.setParameter("Ladistancespits", distanceSpits);
-		query.setParameter("Lesremarques", remarques);
-		query.setParameter("theSpotId", spotId);
-		query.executeUpdate();
+		Spot theSpot=spotService.getSpot(spotId);	
+		laVoie.setSpot(theSpot);
+		currentSession.saveOrUpdate(laVoie);	
 	}
 
 	@Override
