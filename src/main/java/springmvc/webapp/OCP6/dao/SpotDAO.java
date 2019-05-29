@@ -9,5 +9,6 @@ public interface SpotDAO {
 	public void saveSpot(Spot theSpot);
 	public Spot getSpot(int theId);
 	public void deleteSpot(int theId);
+	public List<Spot> searchSpots(String lieu, Integer nbrSecteurs, Boolean  tagged, Boolean voieEquipee);
 
 }

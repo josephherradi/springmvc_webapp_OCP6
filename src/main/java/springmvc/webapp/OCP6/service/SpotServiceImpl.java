@@ -37,12 +37,12 @@ public class SpotServiceImpl implements SpotService {
 		spotDAO.deleteSpot(theId);
 	}
 
+	@Override
+	@Transactional
+	public List<Spot> searchSpots(String lieu, Integer nbrSecteurs, Boolean tagged, Boolean voieEquipee) {
+		return spotDAO.searchSpots(lieu,nbrSecteurs,tagged,voieEquipee);
+	}
 
-	
 
+	}
 
-
-	
-	
-
-}

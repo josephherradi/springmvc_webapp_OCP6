@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import springmvc.webapp.OCP6.entity.Spot;
 
@@ -48,4 +49,44 @@ public class SpotDAOImpl implements SpotDAO{
 		Spot spotLine = currentSession.byId(Spot.class).load(theId);
 		currentSession.delete(spotLine);
 	}
-}
+
+	@Override
+	public List<Spot> searchSpots(String lieu, Integer  nbrSecteurs, Boolean tagged, Boolean voieEquipee) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		String queryDyn="select s from Spot s where 1=1";
+		
+		if(!StringUtils.isEmpty(lieu)) {
+			queryDyn=queryDyn + " and s.lieu= :lieu";
+		}
+		if(!StringUtils.isEmpty(nbrSecteurs)) {
+			queryDyn=queryDyn + " and s.nbrSecteurs= :nbrSecteurs";
+		}
+		if(!StringUtils.isEmpty(tagged)) {
+			queryDyn=queryDyn + " and s.tagged= :tagged";
+		}
+		if(!StringUtils.isEmpty(voieEquipee)) {
+			queryDyn=queryDyn + " and s.voieEquipee= :voieEquipee";
+		}
+		
+		
+		Query<Spot> query = currentSession.createQuery(queryDyn,Spot.class);
+		
+		if(!StringUtils.isEmpty(lieu)) {
+		query.setParameter("lieu", lieu);
+		}
+		if(!StringUtils.isEmpty(nbrSecteurs)) {
+			query.setParameter("nbrSecteurs", nbrSecteurs);
+		}
+		if(!StringUtils.isEmpty(tagged)) {
+			query.setParameter("tagged", tagged);
+		}
+		if(!StringUtils.isEmpty(voieEquipee)) {
+			query.setParameter("voieEquipee", voieEquipee);
+		}
+		List<Spot> SearchResultList = query.getResultList();
+
+		return SearchResultList;
+	}
+
+	}
+
