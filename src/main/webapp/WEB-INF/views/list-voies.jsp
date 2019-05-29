@@ -42,6 +42,10 @@
 					<c:url var="deleteLink" value="delete">
 						<c:param name="voieId" value="${tempVoie.voieId}" />
 					</c:url>
+					<c:url var="detailsLink"
+						value="/voies/${tempVoie.voieId}/longueurs/list">
+					</c:url>
+
 					<tr>
 						<td>${tempVoie.nbrLongueurs}</td>
 						<td>${tempVoie.distanceSpits}</td>
@@ -50,6 +54,8 @@
 							href="${deleteLink}"
 							onclick="if (!(confirm('Are you sure you want to delete cette voie?'))) return false">Delete</a>
 						</td>
+						<td><a href="${detailsLink}">Détails</a></td>
+						
 
 					</tr>
 				</c:forEach>

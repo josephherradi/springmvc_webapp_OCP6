@@ -17,14 +17,14 @@ public class LongueurServiceImpl implements LongueurService{
 	
 	@Override
 	@Transactional
-	public List<Longueur> getLongueurs() {
-		return longueurDAO.getLongueurs();
+	public List<Longueur> getLongueurs(int voieId) {
+		return longueurDAO.getLongueurs(voieId);
 	}
 
 	@Override
 	@Transactional
-	public void saveLongueur(Longueur laLongueur) {
-		longueurDAO.saveLongueur(laLongueur);
+	public void saveLongueur(Longueur laLongueur,int voieId) {
+		longueurDAO.saveLongueur(laLongueur,voieId);
 	}
 
 	@Override

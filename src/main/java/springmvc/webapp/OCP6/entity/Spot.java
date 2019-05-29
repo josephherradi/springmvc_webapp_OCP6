@@ -45,8 +45,6 @@ public class Spot {
 	@Column(name="nbr_secteurs")
 	private int nbrSecteurs;
 	
-	@Column(name="nbr_voies")
-	private int nbrVoies;
 	
 	@Column(name="voie_equipee")
 	private Boolean voieEquipee;
@@ -112,13 +110,6 @@ public class Spot {
 		this.nbrSecteurs = nbrSecteurs;
 	}
 
-	public Integer getNbrVoies() {
-		return nbrVoies;
-	}
-
-	public void setNbrVoies(Integer nbrVoies) {
-		this.nbrVoies = nbrVoies;
-	}
 
 	public Boolean getVoieEquipee() {
 		return voieEquipee;
@@ -149,7 +140,7 @@ public class Spot {
 	@Override
 	public String toString() {
 		return "Spot [spotId=" + spotId + ", spotName=" + spotName + ", description=" + description + ", lieu=" + lieu
-				+ ", nbrSecteurs=" + nbrSecteurs + ", nbrVoies=" + nbrVoies + ", voieEquipee=" + voieEquipee
+				+ ", nbrSecteurs=" + nbrSecteurs + ", voieEquipee=" + voieEquipee
 				+ ", dateAjout=" + dateAjout + ", tagged=" + tagged + "]";
 	}
 }

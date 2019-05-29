@@ -59,13 +59,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="nbrVoies" class="col-md-3 control-label">nbr
-							voies</label>
-						<div class="col-md-9">
-							<form:input path="nbrVoies" cssClass="form-control" />
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="voieEquipee" class="col-md-3 control-label">voie
 							equipee</label>
 						<div class="col-md-9">

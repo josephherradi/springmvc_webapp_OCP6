@@ -17,7 +17,7 @@ import org.hibernate.annotations.NamedQuery;
 @Entity
 @Table(name="longueur")
 @NamedQueries({
-@NamedQuery(name = "FindLongueurs", query = "from Longueur"),
+@NamedQuery(name = "FindLongueurs", query = "from Longueur as l where l.voie.voieId=:laVoieId"),
 })
 
 public class Longueur {
@@ -73,6 +73,14 @@ public class Longueur {
 
 	public void setCotation(String cotation) {
 		this.cotation = cotation;
+	}
+
+	public Voie getVoie() {
+		return voie;
+	}
+
+	public void setVoie(Voie voie) {
+		this.voie = voie;
 	}
 
 	@Override

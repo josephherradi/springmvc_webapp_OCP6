@@ -9,27 +9,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import springmvc.webapp.OCP6.entity.Longueur;
+import springmvc.webapp.OCP6.entity.Voie;
+import springmvc.webapp.OCP6.service.VoieService;
 
 @Repository
 public class LongueurDAOImpl implements LongueurDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private VoieService voieService;
 
 	@Override
-	public List<Longueur> getLongueurs() {
+	public List<Longueur> getLongueurs(int voieId) {
 		Session currentSession = sessionFactory.getCurrentSession();
 
 		Query<Longueur> query = currentSession.createNamedQuery("FindLongueurs", 
 				  Longueur.class);
+		query.setParameter("laVoieId", voieId);
 		List<Longueur> ResultList = query.getResultList();
 		
 		return ResultList;
 	}
 
 	@Override
-	public void saveLongueur(Longueur laLongueur) {
+	public void saveLongueur(Longueur laLongueur,int voieId) {
 		Session currentSession = sessionFactory.getCurrentSession();
+		Voie theVoie=voieService.getVoie(voieId);
+		laLongueur.setVoie(theVoie);
 		currentSession.saveOrUpdate(laLongueur);
 		
 	}
