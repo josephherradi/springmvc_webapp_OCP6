@@ -58,7 +58,7 @@
 				onclick="window.location.href='showForm'; return false;"
 				class="btn btn-primary" /> <br>
 			<h2>Liste des spots</h2>
-
+			
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th>name</th>
