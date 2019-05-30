@@ -32,6 +32,9 @@ public class Utilisateur {
 	@Column(name="user_type")
 	private String userType;
 	
+	@Column(name="password")
+	private String password;
+	
 	
 	public Utilisateur() {}
 
@@ -74,12 +77,24 @@ public class Utilisateur {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	
+	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
 		return "Utilisateur [utilisateurpk=" + utilisateurpk + ", nom=" + nom + ", prenom=" + prenom + ", userId="
-				+ userId + ", userType=" + userType + "]";
+				+ userId + ", userType=" + userType + ", password=" + password + "]";
 	}
+
+
 	
 	
 	

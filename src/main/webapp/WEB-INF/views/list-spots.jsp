@@ -19,29 +19,32 @@
 
 
 		<div class="col-md-offset-2 col-md-9">
+			<div style="text-align: right">
+				<a href="${pageContext.request.contextPath}/account/logout" class="button medium hpbottom">Se déconnecter</a>
+			</div>
+			<p>Bienvenue ${sessionScope.user}</p>
+			<br>
+
+
 			<h3>Recherche par critère</h3>
 			<br>
 
-			<form:form action="searchSpots" cssClass="form-horizontal"
-				method="get">
+			<form:form
+				action="${pageContext.request.contextPath }/spots/searchSpots"
+				cssClass="form-horizontal" method="get">
 				<br>
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-4">
-						<label for="tagged"></label> 
-						<select
-							class="form-control" name="tagged" >
+						<label for="tagged"></label> <select class="form-control"
+							name="tagged">
 							<option value="" selected disabled>Spot tagged?</option>
 							<option value="TRUE">oui</option>
 							<option value="FALSE">non</option>
-						</select> 
-						<br>
-						<select
-							class="form-control" name="voieEquipee" >
+						</select> <br> <select class="form-control" name="voieEquipee">
 							<option value="" selected disabled>Voie Equipee?</option>
 							<option value="TRUE">oui</option>
 							<option value="FALSE">non</option>
-						</select> 
-						<br> <input name="lieu" class="form-control"
+						</select> <br> <input name="lieu" class="form-control"
 							placeholder="lieu" /> <br> <input name="nbrSecteurs"
 							class="form-control" placeholder="nombre secteurs" /> <br>
 						<button type="submit" class="btn btn-default btn-sm">Chercher</button>
@@ -70,7 +73,8 @@
 
 				</tr>
 
-				<c:forEach var="tempSpot" items="${ empty spotsFound ? spots : spotsFound}">
+				<c:forEach var="tempSpot"
+					items="${ empty spotsFound ? spots : spotsFound}">
 
 					<c:url var="updateLink" value="/spots/updateForm">
 						<c:param name="spotId" value="${tempSpot.spotId}" />
