@@ -1,6 +1,8 @@
 package springmvc.webapp.OCP6.dao;
 
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -22,14 +24,13 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 
 	@Override
 	public Utilisateur getUtilisateur(String userId) {
-		Utilisateur utilisateur= null;
 		Session currentSession = sessionFactory.getCurrentSession();	
 		String queryString="select u from Utilisateur u where u.userId=:userId";
-		Query<Utilisateur> query = currentSession.createQuery(queryString);
+		Query<Utilisateur> query = currentSession.createQuery(queryString,Utilisateur.class);
 		query.setParameter("userId", userId);
-		utilisateur=(Utilisateur) ((Query) currentSession).getSingleResult();
+		List<Utilisateur> ResultList = query.getResultList();
 
-		return utilisateur;
+		return ResultList.get(0);
 	}
 
 }

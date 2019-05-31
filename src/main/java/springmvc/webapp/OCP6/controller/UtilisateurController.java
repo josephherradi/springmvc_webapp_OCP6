@@ -28,8 +28,9 @@ public class UtilisateurController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String listSpots(@RequestParam("userId") String userId, @RequestParam("password") String password,
 			HttpSession session, ModelMap theModelMap) {
+		Utilisateur registredUserId=utilisateurService.getUtilisateur(userId);
 
-		if (userId.equalsIgnoreCase("user") && password.equalsIgnoreCase("123")) {
+		if (userId.equalsIgnoreCase(registredUserId.getUserId()) && password.equalsIgnoreCase(registredUserId.getPassword())) {
 			session.setAttribute("user", userId);
 			return "list-spots";
 		} else {
