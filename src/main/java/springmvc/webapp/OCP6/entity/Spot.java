@@ -136,11 +136,22 @@ public class Spot {
 	public void setTagged(Boolean tagged) {
 		this.tagged = tagged;
 	}
+	
+	
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
 
 	@Override
 	public String toString() {
 		return "Spot [spotId=" + spotId + ", spotName=" + spotName + ", description=" + description + ", lieu=" + lieu
-				+ ", nbrSecteurs=" + nbrSecteurs + ", voieEquipee=" + voieEquipee
-				+ ", dateAjout=" + dateAjout + ", tagged=" + tagged + "]";
+				+ ", nbrSecteurs=" + nbrSecteurs + ", voieEquipee=" + voieEquipee + ", dateAjout=" + dateAjout
+				+ ", tagged=" + tagged + ", utilisateur=" + utilisateur + ", voies=" + voies + "]";
 	}
+
 }

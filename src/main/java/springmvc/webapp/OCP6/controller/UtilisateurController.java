@@ -29,15 +29,31 @@ public class UtilisateurController {
 	public String listSpots(@RequestParam("userId") String userId, @RequestParam("password") String password,
 			HttpSession session, ModelMap theModelMap) {
 		Utilisateur registredUserId=utilisateurService.getUtilisateur(userId);
-
-		if (userId.equalsIgnoreCase(registredUserId.getUserId()) && password.equalsIgnoreCase(registredUserId.getPassword())) {
+		try {
+		String registredID=registredUserId.getUserId();
+		String registredPWD=registredUserId.getPassword();
+		registredUserId.getPassword();
+		if (userId.equalsIgnoreCase(registredID) && password.equalsIgnoreCase(registredPWD)) {
 			session.setAttribute("user", userId);
+			session.setAttribute("theUser", registredUserId);
+
 			return "list-spots";
 		} else {
-			theModelMap.put("error", "Invalid Account");
+			theModelMap.put("error", "Please check Id & password");
 			return "index";
 
 		}
+		
+		} catch (NullPointerException e) {
+			theModelMap.put("error", "Please register account first");
+
+		};
+		
+		return "index";
+
+
+		
+
 	}
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {

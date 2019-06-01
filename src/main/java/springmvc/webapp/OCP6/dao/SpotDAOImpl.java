@@ -10,12 +10,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import springmvc.webapp.OCP6.entity.Spot;
+import springmvc.webapp.OCP6.entity.Utilisateur;
+import springmvc.webapp.OCP6.service.SpotService;
+import springmvc.webapp.OCP6.service.UtilisateurService;
 
 @Repository
 public class SpotDAOImpl implements SpotDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private UtilisateurService utilisateurService;
 	
 	@Override
 	public List<Spot> getSpots(){

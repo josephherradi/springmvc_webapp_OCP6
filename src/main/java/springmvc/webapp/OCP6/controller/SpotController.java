@@ -2,6 +2,9 @@ package springmvc.webapp.OCP6.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import springmvc.webapp.OCP6.entity.Spot;
+import springmvc.webapp.OCP6.entity.Utilisateur;
 import springmvc.webapp.OCP6.service.SpotService;
 
 @Controller
@@ -49,7 +53,9 @@ public class SpotController {
 	}
 
 	@RequestMapping(value = "saveForm", method = RequestMethod.POST)
-	public String saveSpot(@ModelAttribute("spot") Spot theSpot) {
+	public String saveSpot(@ModelAttribute("spot") Spot theSpot,HttpSession session, HttpServletRequest request) {
+	     Utilisateur theUser=(Utilisateur)request.getSession().getAttribute("theUser");
+		theSpot.setUtilisateur(theUser);
 		spotService.saveSpot(theSpot);
 		return "redirect:/spots/list";
 	}

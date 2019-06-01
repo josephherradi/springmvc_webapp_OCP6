@@ -3,6 +3,7 @@ package springmvc.webapp.OCP6.dao;
 import java.util.List;
 
 import springmvc.webapp.OCP6.entity.Spot;
+import springmvc.webapp.OCP6.entity.Utilisateur;
 
 public interface SpotDAO {
 	public List<Spot> getSpots();

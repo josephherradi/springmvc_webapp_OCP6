@@ -55,7 +55,7 @@
 			</form:form>
 
 			<br> <input type="button" value="Add Spot"
-				onclick="window.location.href='showForm'; return false;"
+				onclick="window.location.href='${pageContext.request.contextPath }/spots/showForm'; return false;"
 				class="btn btn-primary" /> <br>
 			<h2>Liste des spots</h2>
 			

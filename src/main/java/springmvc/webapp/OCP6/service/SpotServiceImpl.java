@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import springmvc.webapp.OCP6.dao.SpotDAO;
 import springmvc.webapp.OCP6.entity.Spot;
+import springmvc.webapp.OCP6.entity.Utilisateur;
 
 @Service
 public class SpotServiceImpl implements SpotService {
