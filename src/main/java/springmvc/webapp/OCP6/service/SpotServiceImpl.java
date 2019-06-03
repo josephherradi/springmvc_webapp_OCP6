@@ -1,13 +1,14 @@
 package springmvc.webapp.OCP6.service;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import springmvc.webapp.OCP6.dao.SpotDAO;
 import springmvc.webapp.OCP6.entity.Spot;
-import springmvc.webapp.OCP6.entity.Utilisateur;
 
 @Service
 public class SpotServiceImpl implements SpotService {
@@ -42,6 +43,12 @@ public class SpotServiceImpl implements SpotService {
 	@Transactional
 	public List<Spot> searchSpots(String lieu, Integer nbrSecteurs, Boolean tagged, Boolean voieEquipee) {
 		return spotDAO.searchSpots(lieu,nbrSecteurs,tagged,voieEquipee);
+	}
+
+	@Override
+	@Transactional
+	public List<Spot> userSpots(HttpServletRequest request) {
+		return spotDAO.userSpots(request);
 	}
 
 

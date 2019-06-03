@@ -2,6 +2,8 @@ package springmvc.webapp.OCP6.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,17 +13,13 @@ import org.springframework.util.StringUtils;
 
 import springmvc.webapp.OCP6.entity.Spot;
 import springmvc.webapp.OCP6.entity.Utilisateur;
-import springmvc.webapp.OCP6.service.SpotService;
-import springmvc.webapp.OCP6.service.UtilisateurService;
+
 
 @Repository
 public class SpotDAOImpl implements SpotDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	@Autowired
-	private UtilisateurService utilisateurService;
 	
 	@Override
 	public List<Spot> getSpots(){
@@ -92,6 +90,18 @@ public class SpotDAOImpl implements SpotDAO{
 		List<Spot> SearchResultList = query.getResultList();
 
 		return SearchResultList;
+	}
+
+	@Override
+	public List<Spot> userSpots(HttpServletRequest request) {
+			Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");		
+			Session currentSession = sessionFactory.getCurrentSession();
+			String query="select s from Spot s where s.utilisateur=:theloggedUser";
+			Query<Spot> queryRes = currentSession.createQuery(query,Spot.class);
+			queryRes.setParameter("theloggedUser", loggedUser);
+			List<Spot> SearchResultList = queryRes.getResultList();
+
+		  return SearchResultList;
 	}
 
 	}

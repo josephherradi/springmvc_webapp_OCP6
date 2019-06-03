@@ -54,11 +54,13 @@ public class SpotController {
 
 	@RequestMapping(value = "saveForm", method = RequestMethod.POST)
 	public String saveSpot(@ModelAttribute("spot") Spot theSpot,HttpSession session, HttpServletRequest request) {
-	     Utilisateur theUser=(Utilisateur)request.getSession().getAttribute("theUser");
-		theSpot.setUtilisateur(theUser);
+	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
+		theSpot.setUtilisateur(loggedUser);
 		spotService.saveSpot(theSpot);
 		return "redirect:/spots/list";
-	}
+		}
+
+	
 
 	@RequestMapping(value = "updateForm", method = RequestMethod.GET)
 	public String showFormForUpdate(@RequestParam("spotId") int theId, Model theModel) {
@@ -69,8 +71,16 @@ public class SpotController {
 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String deleteSpot(@RequestParam("spotId") int theId) {
-		spotService.deleteSpot(theId);
+	   spotService.deleteSpot(theId);
+		
 		return "redirect:/spots/list";
+	}
+	
+	@RequestMapping(value = "user/list", method = RequestMethod.GET)
+	public String userlistSpots(Model theModel,HttpServletRequest request) {
+		List<Spot> theuserSpots = spotService.userSpots(request);
+		theModel.addAttribute("theuserSpots", theuserSpots);
+		return "user-spots";
 	}
 
 }

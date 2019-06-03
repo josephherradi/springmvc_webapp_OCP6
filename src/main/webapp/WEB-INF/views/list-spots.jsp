@@ -20,10 +20,15 @@
 
 		<div class="col-md-offset-2 col-md-9">
 			<div style="text-align: right">
-				<a href="${pageContext.request.contextPath}/account/logout" class="button medium hpbottom">Se déconnecter</a>
+				<a href="${pageContext.request.contextPath}/account/logout"
+					class="button medium hpbottom">Se déconnecter</a>
 			</div>
 			<p>Bienvenue ${sessionScope.user}</p>
 			<br>
+			<div style="text-align: left">
+				<a href="${pageContext.request.contextPath}/spots/user/list"
+					class="button medium hpbottom">Mes spots</a>
+			</div>
 
 
 			<h3>Recherche par critère</h3>
@@ -58,7 +63,7 @@
 				onclick="window.location.href='${pageContext.request.contextPath }/spots/showForm'; return false;"
 				class="btn btn-primary" /> <br>
 			<h2>Liste des spots</h2>
-			
+
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th>name</th>
@@ -95,10 +100,10 @@
 						<td>${tempSpot.nbrSecteurs}</td>
 						<td>${tempSpot.tagged}</td>
 						<td>${tempSpot.voieEquipee}</td>
-						<td><a href="${updateLink}">Update</a> <a
-							href="${deleteLink}"
-							onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a>
-						</td>
+<%-- 						<td><a href="${updateLink}">Update</a> <a --%>
+<%-- 							href="${deleteLink}" --%>
+<!-- 							onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a> -->
+<!-- 						</td> -->
 						<td><a href="${detailsLink}">Détails</a></td>
 
 
