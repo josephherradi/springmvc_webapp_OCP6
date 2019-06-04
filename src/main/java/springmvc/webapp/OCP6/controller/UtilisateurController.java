@@ -37,7 +37,7 @@ public class UtilisateurController {
 			session.setAttribute("user", userId);
 			session.setAttribute("theUser", registredUserId);
 
-			return "list-spots";
+			return "redirect:/spots/list";
 		} else {
 			theModelMap.put("error", "Please check Id & password");
 			return "index";
@@ -58,6 +58,8 @@ public class UtilisateurController {
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("theUser");
+		session.removeAttribute("user");
+
 		return "redirect:../account";
 		
 	}

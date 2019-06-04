@@ -20,6 +20,7 @@
 			<br> <input type="button" value="Add longueur"
 				onclick="window.location.href='showForm'; return false;"
 				class="btn btn-primary" /> <br>
+
 			<h2>Liste des longueurs</h2>
 
 			<table class="table table-striped table-bordered">
@@ -47,10 +48,14 @@
 						<td>${tempLongueur.valeur}</td>
 						<td>${tempLongueur.relai}</td>
 						<td>${tempLongueur.cotation}</td>
-						<td><a href="${updateLink}">Update</a>|<a
-							href="${deleteLink}"
-							onclick="if (!(confirm('Are you sure you want to delete cette longueur?'))) return false">Delete</a>
-						</td>
+						<c:if
+							test="${sessionScope.user == tempLongueur.voie.spot.utilisateur.userId}"
+							var="variable">
+							<td><a href="${updateLink}">Update</a>|<a
+								href="${deleteLink}"
+								onclick="if (!(confirm('Are you sure you want to delete cette longueur?'))) return false">Delete</a>
+							</td>
+						</c:if>
 
 					</tr>
 				</c:forEach>

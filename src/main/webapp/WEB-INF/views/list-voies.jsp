@@ -50,12 +50,17 @@
 						<td>${tempVoie.nbrLongueurs}</td>
 						<td>${tempVoie.distanceSpits}</td>
 						<td>${tempVoie.remarques}</td>
-						<td><a href="${updateLink}">Update</a>|<a
-							href="${deleteLink}"
-							onclick="if (!(confirm('Are you sure you want to delete cette voie?'))) return false">Delete</a>
-						</td>
+						<c:if
+							test="${sessionScope.user == tempVoie.spot.utilisateur.userId}"
+							var="variable">
+
+							<td><a href="${updateLink}">Update</a>|<a
+								href="${deleteLink}"
+								onclick="if (!(confirm('Are you sure you want to delete cette voie?'))) return false">Delete</a>
+							</td>
+						</c:if>
 						<td><a href="${detailsLink}">Détails</a></td>
-						
+
 
 					</tr>
 				</c:forEach>

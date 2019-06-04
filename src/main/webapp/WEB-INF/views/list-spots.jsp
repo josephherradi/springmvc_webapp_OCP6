@@ -59,11 +59,15 @@
 
 			</form:form>
 
-			<br> <input type="button" value="Add Spot"
-				onclick="window.location.href='${pageContext.request.contextPath }/spots/showForm'; return false;"
-				class="btn btn-primary" /> <br>
+			<br>
 			<h2>Liste des spots</h2>
 
+			<c:if test="${sessionScope.user != null}" var="variable">
+				<input type="button" value="Add Spot"
+					onclick="window.location.href='${pageContext.request.contextPath }/spots/showForm'; return false;"
+					class="btn btn-primary" />
+			</c:if>
+			<br> <br>
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th>name</th>
@@ -100,11 +104,24 @@
 						<td>${tempSpot.nbrSecteurs}</td>
 						<td>${tempSpot.tagged}</td>
 						<td>${tempSpot.voieEquipee}</td>
-<%-- 						<td><a href="${updateLink}">Update</a> <a --%>
-<%-- 							href="${deleteLink}" --%>
-<!-- 							onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a> -->
-<!-- 						</td> -->
 						<td><a href="${detailsLink}">Détails</a></td>
+
+
+						<c:if test="${sessionScope.user == tempSpot.utilisateur.userId}"
+							var="variable">
+
+							<td><a href="${updateLink}">Update</a> <a
+								href="${deleteLink}"
+								onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a>
+							</td>
+						</c:if>
+
+						<c:if test="${sessionScope.user != tempSpot.utilisateur.userId}"
+							var="variable">
+
+							<td><a> </a> <a> </a></td>
+						</c:if>
+
 
 
 					</tr>
