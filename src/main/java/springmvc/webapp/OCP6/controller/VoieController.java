@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import springmvc.webapp.OCP6.entity.Spot;
 import springmvc.webapp.OCP6.entity.Voie;
+import springmvc.webapp.OCP6.service.SpotService;
 import springmvc.webapp.OCP6.service.VoieService;
 
 @Controller
@@ -23,6 +25,9 @@ public class VoieController {
 	@Autowired
 	private VoieService voieService;
 	
+	@Autowired
+	private SpotService spotService;
+	
 	
 	
 
@@ -31,6 +36,8 @@ public class VoieController {
 	public String listVoies(@PathVariable("spotId") int spotId,Model theModel) {
 		List<Voie> lesVoies= voieService.getVoies(spotId);
 		theModel.addAttribute("voies", lesVoies);
+		Spot theSpot=spotService.getSpot(spotId);
+		theModel.addAttribute("spot", theSpot);
 		return "list-voies";
 	}
 	

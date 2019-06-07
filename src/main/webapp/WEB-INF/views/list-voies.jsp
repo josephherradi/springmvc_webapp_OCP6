@@ -17,9 +17,17 @@
 				<button type="button" name="back" onclick="history.back()">back</button>
 
 			</p>
-			<br> <input type="button" value="Add voie"
-				onclick="window.location.href='showForm'; return false;"
-				class="btn btn-primary" /> <br>
+			<br>
+			<c:if test="${sessionScope.user == spot.utilisateur.userId}"
+				var="variable">
+
+				<input type="button" value="Add voie"
+					onclick="window.location.href='showForm'; return false;"
+					class="btn btn-primary" />
+			</c:if>
+
+
+			<br>
 			<h2>Liste des voies</h2>
 
 			<table class="table table-striped table-bordered">
