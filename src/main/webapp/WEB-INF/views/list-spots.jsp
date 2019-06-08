@@ -107,7 +107,7 @@
 						<td><a href="${detailsLink}">Détails</a></td>
 
 
-						<c:if test="${sessionScope.user == tempSpot.utilisateur.userId}"
+						<c:if test="${sessionScope.user == tempSpot.utilisateur.userId && sessionScope.user!=null}"
 							var="variable">
 
 							<td><a href="${updateLink}">Update</a> <a
@@ -116,11 +116,7 @@
 							</td>
 						</c:if>
 
-						<c:if test="${sessionScope.user != tempSpot.utilisateur.userId}"
-							var="variable">
 
-							<td><a> </a> <a> </a></td>
-						</c:if>
 
 
 

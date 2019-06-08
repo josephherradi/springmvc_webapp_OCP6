@@ -53,7 +53,7 @@
 						<td>${tempLongueur.relai}</td>
 						<td>${tempLongueur.cotation}</td>
 						<c:if
-							test="${sessionScope.user == tempLongueur.voie.spot.utilisateur.userId}"
+							test="${sessionScope.user == tempLongueur.voie.spot.utilisateur.userId && sessionScope.user!=null}"
 							var="variable">
 							<td><a href="${updateLink}">Update</a>|<a
 								href="${deleteLink}"

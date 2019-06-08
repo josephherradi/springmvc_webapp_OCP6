@@ -59,7 +59,7 @@
 						<td>${tempVoie.distanceSpits}</td>
 						<td>${tempVoie.remarques}</td>
 						<c:if
-							test="${sessionScope.user == tempVoie.spot.utilisateur.userId}"
+							test="${sessionScope.user == tempVoie.spot.utilisateur.userId && sessionScope.user!=null}"
 							var="variable">
 
 							<td><a href="${updateLink}">Update</a>|<a
