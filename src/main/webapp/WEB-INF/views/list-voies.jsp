@@ -51,7 +51,7 @@
 						<c:param name="voieId" value="${tempVoie.voieId}" />
 					</c:url>
 					<c:url var="detailsLink"
-						value="/voies/${tempVoie.voieId}/longueurs/list">
+						value="/spots/${tempVoie.spot.spotId}/voies/${tempVoie.voieId}/longueurs/list">
 					</c:url>
 
 					<tr>

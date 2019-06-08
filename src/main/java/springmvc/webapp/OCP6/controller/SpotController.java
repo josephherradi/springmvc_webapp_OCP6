@@ -76,7 +76,7 @@ public class SpotController {
 		return "redirect:/spots/list";
 	}
 	
-	@RequestMapping(value = "user/list", method = RequestMethod.GET)
+	@RequestMapping(value = "mylist", method = RequestMethod.GET)
 	public String userlistSpots(Model theModel,HttpServletRequest request) {
 		List<Spot> theuserSpots = spotService.userSpots(request);
 		theModel.addAttribute("theuserSpots", theuserSpots);

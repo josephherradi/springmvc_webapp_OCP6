@@ -26,7 +26,7 @@
 			<p>Bienvenue ${sessionScope.user}</p>
 			<br>
 			<div style="text-align: left">
-				<a href="${pageContext.request.contextPath}/spots/user/list"
+				<a href="${pageContext.request.contextPath}/spots/mylist"
 					class="button medium hpbottom">Mes spots</a>
 			</div>
 

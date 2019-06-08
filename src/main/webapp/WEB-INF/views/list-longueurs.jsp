@@ -17,9 +17,13 @@
 				<button type="button" name="back" onclick="history.back()">back</button>
 
 			</p>
-			<br> <input type="button" value="Add longueur"
-				onclick="window.location.href='showForm'; return false;"
-				class="btn btn-primary" /> <br>
+			<c:if test="${sessionScope.user == spot.utilisateur.userId}"
+				var="variable">
+
+				<input type="button" value="Add longueur"
+					onclick="window.location.href='showForm'; return false;"
+					class="btn btn-primary" />
+			</c:if>
 
 			<h2>Liste des longueurs</h2>
 
