@@ -48,6 +48,7 @@ public class SpotController {
 	@RequestMapping(value = "showForm", method = RequestMethod.GET)
 	public String showFormForAdd(Model theModel) {
 		Spot theSpot = new Spot();
+		theSpot.setTagged(false);
 		theModel.addAttribute("spot", theSpot);
 		return "spot-form";
 	}

@@ -39,7 +39,7 @@
 				cssClass="form-horizontal" method="get">
 				<br>
 				<div class="form-group">
-					<div class="col-md-offset-2 col-md-4">
+					<div class="col-md-offset-2 col-md-6">
 						<label for="tagged"></label> <select class="form-control"
 							name="tagged">
 							<option value="" selected disabled>Spot tagged?</option>
@@ -107,7 +107,7 @@
 						<td><a href="${detailsLink}">Détails</a></td>
 
 
-						<c:if test="${sessionScope.user == tempSpot.utilisateur.userId && sessionScope.user!=null}"
+						<c:if test="${(sessionScope.user == tempSpot.utilisateur.userId || sessionScope.user == 'ADMIN')&& sessionScope.user!=null}"
 							var="variable">
 
 							<td><a href="${updateLink}">Update</a> <a
@@ -115,7 +115,6 @@
 								onclick="if (!(confirm('Are you sure you want to delete this spot?'))) return false">Delete</a>
 							</td>
 						</c:if>
-
 
 
 
