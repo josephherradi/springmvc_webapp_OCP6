@@ -76,6 +76,7 @@
 					<th>nombre secteurs</th>
 					<th>tagged</th>
 					<th>voie equipee</th>
+					<th>utilisateur</th>
 
 
 
@@ -96,7 +97,9 @@
 					<c:url var="detailsLink"
 						value="/spots/${tempSpot.spotId}/voies/list">
 					</c:url>
-
+					<c:url var="commentsLink"
+						value="/spots/${tempSpot.spotId}/commentaires/list">
+					</c:url>
 					<tr>
 						<td>${tempSpot.spotName}</td>
 						<td>${tempSpot.description}</td>
@@ -104,7 +107,10 @@
 						<td>${tempSpot.nbrSecteurs}</td>
 						<td>${tempSpot.tagged}</td>
 						<td>${tempSpot.voieEquipee}</td>
+						<td>${tempSpot.utilisateur.userId}</td>
+						
 						<td><a href="${detailsLink}">Détails</a></td>
+						<td><a href="${commentsLink}">Commentaires</a></td>
 
 
 						<c:if test="${(sessionScope.user == tempSpot.utilisateur.userId || sessionScope.user == 'ADMIN')&& sessionScope.user!=null}"

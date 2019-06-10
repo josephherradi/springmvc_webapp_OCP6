@@ -11,10 +11,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 
 
 @Entity
 @Table(name="commentaire")
+@NamedQueries({
+@NamedQuery(name = "FindComments", query = "from Commentaire as c where c.spot.spotId= :theSpotId")
+
+})
+
 
 public class Commentaire {
 	@Id
@@ -72,11 +80,39 @@ public class Commentaire {
 
 
 
+	public Spot getSpot() {
+		return spot;
+	}
+
+
+
+	public void setSpot(Spot spot) {
+		this.spot = spot;
+	}
+
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Commentaire [commentId=" + commentId + ", date=" + date + ", contenu=" + contenu
-				+ "]";
+		return "Commentaire [commentId=" + commentId + ", date=" + date + ", contenu=" + contenu + ", spot=" + spot
+				+ ", utilisateur=" + utilisateur + "]";
 	}
+
+
+
+
 	
 	
 	

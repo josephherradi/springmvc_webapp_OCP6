@@ -54,9 +54,12 @@ public class SpotController {
 	}
 
 	@RequestMapping(value = "saveForm", method = RequestMethod.POST)
-	public String saveSpot(@ModelAttribute("spot") Spot theSpot,HttpSession session, HttpServletRequest request) {
+	public String saveSpot(@ModelAttribute("spot") Spot theSpot, HttpServletRequest request, HttpSession session) {
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
-		theSpot.setUtilisateur(loggedUser);
+		String userId= (String) request.getSession().getAttribute("user");
+	    
+	    if(userId !="ADMIN") {
+	    theSpot.setUtilisateur(loggedUser);}
 		spotService.saveSpot(theSpot);
 		return "redirect:/spots/list";
 		}

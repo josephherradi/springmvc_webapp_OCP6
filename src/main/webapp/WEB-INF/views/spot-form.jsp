@@ -71,22 +71,25 @@
 					<%-- 							<form:input path="dateAjout" cssClass="form-control" /> --%>
 					<!-- 						</div> -->
 					<!-- 					</div> -->
+					<c:if test="${sessionScope.user != 'ADMIN'}" var="variable">
 
-					<div class="form-group">
-						<label for="tagged" class="col-md-3 control-label">label
-							tagged</label>
-						<div class="col-md-9">
-							<form:input path="tagged" value="FALSE" readonly="true"
-								cssClass="form-control" />
+						<div class="form-group">
+							<label for="tagged" class="col-md-3 control-label">label
+								tagged</label>
+							<div class="col-md-9">
+								<form:input path="tagged" value="FALSE" readonly="true"
+									cssClass="form-control" />
+							</div>
 						</div>
-					</div>
+					</c:if>
+
 
 					<c:if test="${sessionScope.user == 'ADMIN'}" var="variable">
 						<div class="form-group">
 							<label for="tagged" class="col-md-3 control-label">label
 								tagged</label>
 							<div class="col-md-9">
-								<form:input path="tagged" value="FALSE" cssClass="form-control" />
+								<form:input path="tagged" cssClass="form-control" />
 							</div>
 						</div>
 					</c:if>
