@@ -11,10 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 
 
 @Entity
 @Table(name="topo")
+@NamedQueries({
+@NamedQuery(name = "FindUserTopos", query = "from Topo as t where t.utilisateur.userId= :theUserId")
+
+})
 public class Topo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -35,9 +42,6 @@ public class Topo {
 	
 	@Column(name="statut")
 	private String statut;
-	
-	@Column(name="owner_id")
-	private String ownerId;
 	
 	@ManyToOne
 	@JoinColumn(name="utilisateur_pk")
@@ -94,18 +98,20 @@ public class Topo {
 		this.statut = statut;
 	}
 
-	public String getOwnerId() {
-		return ownerId;
+	
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	@Override
 	public String toString() {
 		return "Topo [topoId=" + topoId + ", nom=" + nom + ", description=" + description + ", lieu=" + lieu + ", date="
-				+ date + ", statut=" + statut + ", ownerId=" + ownerId + "]";
+				+ date + ", statut=" + statut + "]";
 	}
 	
 	

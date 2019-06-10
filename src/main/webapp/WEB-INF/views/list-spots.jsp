@@ -29,6 +29,11 @@
 				<a href="${pageContext.request.contextPath}/spots/mylist"
 					class="button medium hpbottom">Mes spots</a>
 			</div>
+			<br>
+			<div style="text-align: left">
+				<a href="${pageContext.request.contextPath}/mestopos/list"
+					class="button medium hpbottom">Mes topos</a>
+			</div>
 
 
 			<h3>Recherche par critère</h3>
