@@ -9,7 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
+@NamedQueries({
+@NamedQuery(name = "FindUserReservation", query = "from Reservation as r where r.utilisateur.userId= :theUserId"),
+@NamedQuery(name = "FindAskedReservation", query = "from Reservation as r where r.topo.utilisateur.userId= :theOwnerId")
+
+})
 
 @Entity
 @Table(name="reservation")

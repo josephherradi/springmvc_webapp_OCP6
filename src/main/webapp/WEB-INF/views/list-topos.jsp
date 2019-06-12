@@ -37,13 +37,10 @@
 
 				<c:forEach var="tempTopo" items="${topos}">
 
-					<c:url var="updateLink" value="updateForm">
+					<c:url var="reservationLink" value="reservationShowForm">
 						<c:param name="topoId" value="${tempTopo.topoId}" />
 					</c:url>
 
-					<c:url var="deleteLink" value="delete">
-						<c:param name="topoId" value="${tempTopo.topoId}" />
-					</c:url>
 
 
 					<tr>
@@ -54,15 +51,11 @@
 						<td>${tempTopo.utilisateur.userId}</td>
 
 
-						<%-- 						<c:if --%>
-						<%-- 							test="${sessionScope.user!=null}" --%>
-						<%-- 							var="variable"> --%>
+						<c:if test="${tempTopo.statut=='disponible'}" var="variable">
 
-						<%-- 							<td><a href="${updateLink}">Update</a>|<a --%>
-						<%-- 								href="${deleteLink}" --%>
-						<!-- 								onclick="if (!(confirm('Are you sure you want to delete ce topo?'))) return false">Delete</a> -->
-						<!-- 							</td> -->
-						<%-- 						</c:if> --%>
+						 							<td><a href="${reservationLink}">Réserver</a>
+							</td>
+						</c:if>
 
 
 					</tr>
