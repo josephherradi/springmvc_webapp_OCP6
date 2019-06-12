@@ -58,7 +58,7 @@ public class SpotController {
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
 		String userId= (String) request.getSession().getAttribute("user");
 	    
-	    if(userId !="ADMIN") {
+	    if(!userId.equals("ADMIN")) {
 	    theSpot.setUtilisateur(loggedUser);}
 		spotService.saveSpot(theSpot);
 		return "redirect:/spots/list";

@@ -31,8 +31,14 @@
 			</div>
 			<br>
 			<div style="text-align: left">
-				<a href="${pageContext.request.contextPath}/mestopos/list"
+				<a href="${pageContext.request.contextPath}/topos/mylist"
 					class="button medium hpbottom">Mes topos</a>
+			</div>
+			<br>
+
+			<div style="text-align: left">
+				<a href="${pageContext.request.contextPath}/topos/list"
+					class="button medium hpbottom">Consulter liste des topos</a>
 			</div>
 
 
@@ -113,12 +119,13 @@
 						<td>${tempSpot.tagged}</td>
 						<td>${tempSpot.voieEquipee}</td>
 						<td>${tempSpot.utilisateur.userId}</td>
-						
+
 						<td><a href="${detailsLink}">Détails</a></td>
 						<td><a href="${commentsLink}">Commentaires</a></td>
 
 
-						<c:if test="${(sessionScope.user == tempSpot.utilisateur.userId || sessionScope.user == 'ADMIN')&& sessionScope.user!=null}"
+						<c:if
+							test="${(sessionScope.user == tempSpot.utilisateur.userId || sessionScope.user == 'ADMIN')&& sessionScope.user!=null}"
 							var="variable">
 
 							<td><a href="${updateLink}">Update</a> <a

@@ -57,7 +57,7 @@ public class Spot {
 	
 	
 	@ManyToOne
-	@JoinColumn(name="utilisateur_pk")
+	@JoinColumn(name="utilisateur_pk",updatable=false)
 	private Utilisateur utilisateur;
 
 	

@@ -18,17 +18,17 @@ import springmvc.webapp.OCP6.entity.Topo;
 import springmvc.webapp.OCP6.service.TopoService;
 
 @Controller
-@RequestMapping("/mestopos")
+@RequestMapping("/topos")
 public class TopoController {
 	@Autowired
 	private TopoService topoService;
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String listTopos(Model theModel, HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = "mylist", method = RequestMethod.GET)
+	public String mylistTopos(Model theModel, HttpServletRequest request, HttpSession session) {
 		String userId = (String) request.getSession().getAttribute("user");
-		List<Topo> lesTopos = topoService.getTopos(userId);
-		theModel.addAttribute("topos", lesTopos);
-		return "list-topos";
+		List<Topo> lesTopos = topoService.getUserTopos(userId);
+		theModel.addAttribute("mytopos", lesTopos);
+		return "user-topos";
 	}
 
 	@RequestMapping(value = "showForm", method = RequestMethod.GET)
@@ -42,7 +42,7 @@ public class TopoController {
 	public String saveVoie(@ModelAttribute("leTopo") Topo leTopo, HttpServletRequest request, HttpSession session) {
 		String userId = (String) request.getSession().getAttribute("user");
 		topoService.saveOrUpdateTopo(leTopo, userId);
-		return "redirect:list";
+		return "redirect:mylist";
 
 	}
 
@@ -56,6 +56,14 @@ public class TopoController {
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String deleteSpot(@RequestParam("topoId") int topoId) {
 		topoService.deleteTopo(topoId);
-		return "redirect:list";
+		return "redirect:mylist";
 	}
+	
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public String listTopos(Model theModel, HttpServletRequest request, HttpSession session) {
+		String userId = (String) request.getSession().getAttribute("user");
+		List<Topo> lesTopos = topoService.getTopos(userId);
+		theModel.addAttribute("topos", lesTopos);
+		return "list-topos";
+}
 }

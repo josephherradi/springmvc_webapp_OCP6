@@ -22,7 +22,7 @@ public class TopoDAOImpl implements TopoDAO {
 	
 	
 	@Override
-	public List<Topo> getTopos(String userId) {
+	public List<Topo> getUserTopos(String userId) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Query<Topo> query = currentSession.createNamedQuery("FindUserTopos", 
 				  Topo.class);
@@ -52,5 +52,15 @@ public class TopoDAOImpl implements TopoDAO {
 		Topo leTopo=currentSession.byId(Topo.class).load(topoId);
 		currentSession.delete(leTopo);	
 	}
+	
+	@Override
+	public List<Topo> getTopos(String userId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<Topo> query = currentSession.createNamedQuery("FindTopos", 
+				  Topo.class);
+		query.setParameter("theUserId", userId);
+		List<Topo> ResultList = query.getResultList();
+		return ResultList;
 
+}
 }

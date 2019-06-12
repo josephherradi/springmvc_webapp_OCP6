@@ -19,7 +19,9 @@ import org.hibernate.annotations.NamedQuery;
 @Entity
 @Table(name="topo")
 @NamedQueries({
-@NamedQuery(name = "FindUserTopos", query = "from Topo as t where t.utilisateur.userId= :theUserId")
+@NamedQuery(name = "FindUserTopos", query = "from Topo as t where t.utilisateur.userId= :theUserId"),
+@NamedQuery(name = "FindTopos", query = "from Topo as t where t.utilisateur.userId!= :theUserId")
+
 
 })
 public class Topo {

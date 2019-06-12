@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>topos list</title>
+<title>topos mylist</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 </head>
@@ -17,7 +17,17 @@
 				<button type="button" name="back" onclick="history.back()">back</button>
 
 			</p>
-			<br> <br>
+			<br>
+			<c:if test="${sessionScope.user !=null}"
+				var="variable">
+
+				<input type="button" value="Add topo"
+					onclick="window.location.href='showForm'; return false;"
+					class="btn btn-primary" />
+			</c:if>
+
+
+			<br>
 			<h2>Liste des topos</h2>
 
 			<table class="table table-striped table-bordered">
@@ -26,16 +36,14 @@
 					<th>description</th>
 					<th>lieu</th>
 					<th>statut</th>
-					<th>utilisateur</th>
-
-
+					
 
 
 
 
 				</tr>
 
-				<c:forEach var="tempTopo" items="${topos}">
+				<c:forEach var="tempTopo" items="${mytopos}">
 
 					<c:url var="updateLink" value="updateForm">
 						<c:param name="topoId" value="${tempTopo.topoId}" />
@@ -51,18 +59,16 @@
 						<td>${tempTopo.description}</td>
 						<td>${tempTopo.lieu}</td>
 						<td>${tempTopo.statut}</td>
-						<td>${tempTopo.utilisateur.userId}</td>
+						
+						<c:if
+							test="${sessionScope.user!=null}"
+							var="variable">
 
-
-						<%-- 						<c:if --%>
-						<%-- 							test="${sessionScope.user!=null}" --%>
-						<%-- 							var="variable"> --%>
-
-						<%-- 							<td><a href="${updateLink}">Update</a>|<a --%>
-						<%-- 								href="${deleteLink}" --%>
-						<!-- 								onclick="if (!(confirm('Are you sure you want to delete ce topo?'))) return false">Delete</a> -->
-						<!-- 							</td> -->
-						<%-- 						</c:if> --%>
+							<td><a href="${updateLink}">Update</a>|<a
+								href="${deleteLink}"
+								onclick="if (!(confirm('Are you sure you want to delete ce topo?'))) return false">Delete</a>
+							</td>
+						</c:if>
 
 
 					</tr>

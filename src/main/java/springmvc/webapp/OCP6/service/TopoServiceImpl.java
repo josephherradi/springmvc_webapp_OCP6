@@ -16,8 +16,8 @@ public class TopoServiceImpl implements TopoService{
 
 	@Override
 	@Transactional
-	public List<Topo> getTopos(String userId) {
-		return topoDAO.getTopos(userId);
+	public List<Topo> getUserTopos(String userId) {
+		return topoDAO.getUserTopos(userId);
 	}
 
 	@Override
@@ -37,5 +37,10 @@ public class TopoServiceImpl implements TopoService{
 	public void deleteTopo(int topoId) {
 		topoDAO.deleteTopo(topoId);
 	}
-	
+	@Override
+	@Transactional
+	public List<Topo> getTopos(String userId) {
+		return topoDAO.getTopos(userId);
+	}
+
 }

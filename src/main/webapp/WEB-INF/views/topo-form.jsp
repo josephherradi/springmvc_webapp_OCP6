@@ -53,7 +53,10 @@
 					<div class="form-group">
 						<label for="statut" class="col-md-3 control-label">statut</label>
 						<div class="col-md-9">
-							<form:input path="statut" cssClass="form-control" />
+							<form:select path="statut" cssClass="form-control">
+							<form:option value="disponible">disponible</form:option>
+							<form:option value="indisponible">indisponible</form:option>
+							</form:select>
 						</div>
 					</div>
 
