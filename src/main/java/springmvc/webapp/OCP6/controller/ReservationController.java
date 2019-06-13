@@ -64,8 +64,6 @@ public class ReservationController {
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
 		laReservation.setUtilisateur(loggedUser);
 		reservationService.saveOrUpdateResa(laReservation, topoId);
-		Topo leTopo = topoService.getTopo(topoId);
-		leTopo.setStatut("indisponible");
 		return "redirect:userlist";
 	}
 
