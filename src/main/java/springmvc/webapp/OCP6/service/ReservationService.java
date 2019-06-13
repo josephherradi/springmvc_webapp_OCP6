@@ -9,5 +9,6 @@ public interface ReservationService {
 	public List<Reservation> getAskedReservation(String userId);
 	public void saveOrUpdateResa(Reservation laReservation,int topoId);
 	public void delete(int resaId);
+	public Reservation getReservation(int resaId);
 	
 }

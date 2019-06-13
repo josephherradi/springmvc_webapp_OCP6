@@ -34,9 +34,15 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
+	@Transactional
 	public void delete(int resaId) {
 		reservationDAO.delete(resaId);
-		
+	}
+	
+	@Override
+	@Transactional
+	public Reservation getReservation(int resaId) {
+		return reservationDAO.getReservation(resaId);
 	}
 
 }

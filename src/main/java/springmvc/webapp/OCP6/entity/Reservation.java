@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
@@ -35,7 +36,7 @@ public class Reservation {
 	private Topo topo;
 	
 	@ManyToOne
-	@JoinColumn(name="utilisateur_pk")
+	@JoinColumn(name="utilisateur_pk",updatable=false)
 	private Utilisateur utilisateur;
 	
 	

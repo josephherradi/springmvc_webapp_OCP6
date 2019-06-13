@@ -31,7 +31,7 @@ public class ReservationController {
 
 	@RequestMapping(value = "reservations/userlist", method = RequestMethod.GET)
 	public String userListResa(Model theModel, HttpServletRequest request) {
-	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
+		Utilisateur loggedUser = (Utilisateur) request.getSession().getAttribute("theUser");
 		List<Reservation> userResaList = reservationService.getUserReservations(loggedUser.getUserId());
 		theModel.addAttribute("userResa", userResaList);
 		return "resa-userlist";
@@ -39,14 +39,14 @@ public class ReservationController {
 
 	@RequestMapping(value = "reservations/requestlist", method = RequestMethod.GET)
 	public String listResa(Model theModel, HttpServletRequest request) {
-	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
+		Utilisateur loggedUser = (Utilisateur) request.getSession().getAttribute("theUser");
 		List<Reservation> requestResaList = reservationService.getAskedReservation(loggedUser.getUserId());
 		theModel.addAttribute("requestResa", requestResaList);
 		return "resa-requestlist";
 	}
 
 	@RequestMapping(value = "{topoId}/reservations/showResaForm", method = RequestMethod.GET)
-	public String showFormForAdd(@PathVariable("topoId") int topoId, Model theModel,HttpServletRequest request) {
+	public String showFormForAdd(@PathVariable("topoId") int topoId, Model theModel, HttpServletRequest request) {
 		Reservation laReservation = new Reservation();
 
 		laReservation.setStatut("en attente");
@@ -60,15 +60,25 @@ public class ReservationController {
 
 	@RequestMapping(value = "{topoId}/reservations/saveOrUpdate", method = RequestMethod.POST)
 	public String saveResa(@PathVariable("topoId") int topoId,
-			@ModelAttribute("laReservation") Reservation laReservation,HttpSession session,HttpServletRequest request) {
-	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
-		laReservation.setUtilisateur(loggedUser);
+			@ModelAttribute("laReservation") Reservation laReservation, HttpSession session,
+			HttpServletRequest request) {
+		Utilisateur testUser=laReservation.getUtilisateur();
+		if(testUser==null) {
+		Utilisateur loggedUser = (Utilisateur) request.getSession().getAttribute("theUser");
+		laReservation.setUtilisateur(loggedUser);}
 		reservationService.saveOrUpdateResa(laReservation, topoId);
-		return "redirect:/topos/reservations/userlist";
+		return "redirect:/spots/list";
 	}
 
-	@RequestMapping(value = "reservations/delete", method = RequestMethod.GET)
-	public String deleteSpot(@PathVariable("topoId") int topId, @RequestParam("resaId") int resaId) {
+	@RequestMapping(value = "{topoId}/reservations/updateForm", method = RequestMethod.GET)
+	public String updateForm(@PathVariable("topoId") int topoId, @RequestParam("resaId") int resaId, Model theModel) {
+		Reservation laReservation=reservationService.getReservation(resaId);
+		theModel.addAttribute("laReservation",laReservation);
+		return "reservation-form2";
+	};
+
+	@RequestMapping(value = "{topoId}/reservations/delete", method = RequestMethod.GET)
+	public String deleteSpot(@PathVariable("topoId") int topoId, @RequestParam("resaId") int resaId) {
 		reservationService.delete(resaId);
 		return "redirect:/topos/reservations/userlist";
 

@@ -53,7 +53,14 @@ public class ReservationDAOImpl implements ReservationDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Reservation laReservation=currentSession.byId(Reservation.class).load(resaId);
 		currentSession.delete(laReservation);
-
+	}
+	
+	@Override
+	public Reservation getReservation(int resaId) {
+		Session currentSession=sessionFactory.getCurrentSession();
+		Reservation laReservation=currentSession.get(Reservation.class, resaId);
+		
+		return laReservation;
 	}
 
 }

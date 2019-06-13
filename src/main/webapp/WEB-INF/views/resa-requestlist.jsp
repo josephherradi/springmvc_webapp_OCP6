@@ -25,7 +25,7 @@
 					<th>nom topo</th>
 					<th>lieu</th>
 					<th>statut réservation</th>
-					<th>propriétaire topo</th>
+					<th>utilisateur</th>
 
 
 
@@ -36,17 +36,23 @@
 
 				<c:forEach var="requestResalist" items="${requestResa}">
 
+					<c:url var="acceptResaLink" value="/topos/${requestResalist.topo.topoId}/reservations/updateForm">
+						<c:param name="resaId" value="${requestResalist.reservationId}" />
 
+					</c:url>
 
 
 					<tr>
 						<td>${requestResalist.topo.nom}</td>
 						<td>${requestResalist.topo.lieu}</td>
 						<td>${requestResalist.statut}</td>
-						<td>${requestResalist.topo.utilisateur.userId}</td>
+						<td>${requestResalist.utilisateur.userId}</td>
 
+						<c:if test="${requestResalist.statut=='en attente'}"
+							var="variable">
 
-
+							<td><a href="${acceptResaLink}">Accepter</a></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</table>
