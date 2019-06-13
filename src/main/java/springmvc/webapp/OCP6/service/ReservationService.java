@@ -7,7 +7,7 @@ import springmvc.webapp.OCP6.entity.Reservation;
 public interface ReservationService {
 	public List<Reservation> getUserReservations(String userId);
 	public List<Reservation> getAskedReservation(String userId);
-	public void saveOrUpdateResa(Reservation laReservation,int resaId);
+	public void saveOrUpdateResa(Reservation laReservation,int topoId);
 	public void delete(int resaId);
 	
 }

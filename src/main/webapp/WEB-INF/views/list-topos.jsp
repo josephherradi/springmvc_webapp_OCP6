@@ -37,8 +37,7 @@
 
 				<c:forEach var="tempTopo" items="${topos}">
 
-					<c:url var="reservationLink" value="reservationShowForm">
-						<c:param name="topoId" value="${tempTopo.topoId}" />
+					<c:url var="reservationLink" value="${tempTopo.topoId}/reservations/showResaForm">
 					</c:url>
 
 

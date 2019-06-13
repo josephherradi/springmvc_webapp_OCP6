@@ -28,8 +28,8 @@ public class ReservationServiceImpl implements ReservationService{
 
 	@Override
 	@Transactional
-	public void saveOrUpdateResa(Reservation laReservation, int resaId) {
-		reservationDAO.saveOrUpdateResa(laReservation, resaId);
+	public void saveOrUpdateResa(Reservation laReservation, int topoId) {
+		reservationDAO.saveOrUpdateResa(laReservation,topoId);
 		
 	}
 

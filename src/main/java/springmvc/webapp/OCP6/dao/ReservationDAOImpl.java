@@ -9,11 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import springmvc.webapp.OCP6.entity.Reservation;
+import springmvc.webapp.OCP6.entity.Topo;
+import springmvc.webapp.OCP6.service.TopoService;
 
 @Repository
 public class ReservationDAOImpl implements ReservationDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private TopoService topoService;
 
 	@Override
 	public List<Reservation> getUserReservations(String userId) {
@@ -34,8 +39,10 @@ public class ReservationDAOImpl implements ReservationDAO {
 	}
 
 	@Override
-	public void saveOrUpdateResa(Reservation laReservation, int resaId) {
+	public void saveOrUpdateResa(Reservation laReservation, int topoId) {
 		Session currentSession = sessionFactory.getCurrentSession();
+		Topo leTopo=topoService.getTopo(topoId);
+		laReservation.setTopo(leTopo);
 		currentSession.saveOrUpdate(laReservation);
 
 	}

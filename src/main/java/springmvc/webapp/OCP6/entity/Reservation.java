@@ -60,11 +60,29 @@ public class Reservation {
 	}
 	
 
+	public Topo getTopo() {
+		return topo;
+	}
+
+	public void setTopo(Topo topo) {
+		this.topo = topo;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
 	@Override
 	public String toString() {
-		return "Reservation [reservationId=" + reservationId + ", statut=" + statut + "]";
+		return "Reservation [reservationId=" + reservationId + ", statut=" + statut + ", topo=" + topo
+				+ ", utilisateur=" + utilisateur + "]";
 	}
-	
+
+
 	
 	
 
