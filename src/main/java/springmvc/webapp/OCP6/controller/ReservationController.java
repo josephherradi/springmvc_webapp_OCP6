@@ -29,7 +29,7 @@ public class ReservationController {
 	@Autowired
 	private TopoService topoService;
 
-	@RequestMapping(value = "userlist", method = RequestMethod.GET)
+	@RequestMapping(value = "reservations/userlist", method = RequestMethod.GET)
 	public String userListResa(Model theModel, HttpServletRequest request) {
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
 		List<Reservation> userResaList = reservationService.getUserReservations(loggedUser.getUserId());
@@ -37,7 +37,7 @@ public class ReservationController {
 		return "resa-userlist";
 	}
 
-	@RequestMapping(value = "requestlist", method = RequestMethod.GET)
+	@RequestMapping(value = "reservations/requestlist", method = RequestMethod.GET)
 	public String listResa(Model theModel, HttpServletRequest request) {
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
 		List<Reservation> requestResaList = reservationService.getAskedReservation(loggedUser.getUserId());
@@ -64,13 +64,14 @@ public class ReservationController {
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
 		laReservation.setUtilisateur(loggedUser);
 		reservationService.saveOrUpdateResa(laReservation, topoId);
-		return "redirect:userlist";
+		return "redirect:/topos/reservations/userlist";
 	}
 
-	@RequestMapping(value = "{topoId}/reservations/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "reservations/delete", method = RequestMethod.GET)
 	public String deleteSpot(@PathVariable("topoId") int topId, @RequestParam("resaId") int resaId) {
 		reservationService.delete(resaId);
-		return "redirect:userlist";
+		return "redirect:/topos/reservations/userlist";
 
 	}
+
 }

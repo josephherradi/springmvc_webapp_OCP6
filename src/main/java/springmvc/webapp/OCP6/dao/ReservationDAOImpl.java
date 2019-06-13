@@ -34,8 +34,8 @@ public class ReservationDAOImpl implements ReservationDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Query<Reservation> query=currentSession.createNamedQuery("FindAskedReservation",Reservation.class);
 		query.setParameter("theOwnerId", userId);
-		List<Reservation> ResultList=query.getResultList();
-		return ResultList;
+		List<Reservation> ResultList2=query.getResultList();
+		return ResultList2;
 	}
 
 	@Override

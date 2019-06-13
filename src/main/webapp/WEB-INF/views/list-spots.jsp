@@ -40,6 +40,19 @@
 				<a href="${pageContext.request.contextPath}/topos/list"
 					class="button medium hpbottom">Consulter liste des topos</a>
 			</div>
+			<br>
+			<div style="text-align: left">
+				<a
+					href="${pageContext.request.contextPath}/topos/reservations/userlist"
+					class="button medium hpbottom">Mes réservations</a>
+			</div>
+			<br>
+
+			<div style="text-align: left">
+				<a
+					href="${pageContext.request.contextPath}/topos/reservations/requestlist"
+					class="button medium hpbottom">Réservations demandées</a>
+			</div>
 
 
 			<h3>Recherche par critère</h3>
