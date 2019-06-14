@@ -27,25 +27,55 @@
 					method="post" modelAttribute="laReservation">
 					<h2>Reservation</h2>
 					<form:hidden path="reservationId" />
-					<form:hidden path="statut" />
 
 
-					<div class="form-group">
+					<c:if
+						test="${sessionScope.user != laReservation.topo.utilisateur.userId}"
+						var="variable">
+						<form:hidden path="statut" />
+						<div class="form-group">
 
-						<div class="col-md-9">
-							<h4>Valider la demande de réservation?</h4>
+							<div class="col-md-9">
+								<h4>Valider la demande de réservation?</h4>
+							</div>
 						</div>
-					</div>
 
+					</c:if>
+
+					<c:if
+						test="${sessionScope.user == laReservation.topo.utilisateur.userId}"
+						var="variable">
+						<form:hidden path="utilisateur"
+							value="${laReservation.utilisateur}" />
+
+						<div class="form-group">
+
+							<div class="col-md-9">
+								<h4>Accepter la demande de réservation?</h4>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="statut" class="col-md-3 control-label">statut</label>
+							<div class="col-md-9">
+								<form:select path="statut" cssClass="form-control">
+									<form:option value="en attente">en attente</form:option>
+									<form:option value="acceptee">accepter</form:option>
+								</form:select>
+							</div>
+						</div>
+
+					</c:if>
 
 					<div class="form-group">
 						<div class="col-md-offset-3 col-md-9">
 							<form:button cssClass="btn btn-primary">OK</form:button>
 						</div>
 					</div>
-					
+
 				</form:form>
-				
+
 
 
 

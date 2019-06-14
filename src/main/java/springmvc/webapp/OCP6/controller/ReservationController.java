@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +61,7 @@ public class ReservationController {
 
 	@RequestMapping(value = "{topoId}/reservations/saveOrUpdate", method = RequestMethod.POST)
 	public String saveResa(@PathVariable("topoId") int topoId,
-			@ModelAttribute("laReservation") Reservation laReservation, HttpSession session,
+			@ModelAttribute("laReservation") Reservation laReservation,BindingResult result, HttpSession session,
 			HttpServletRequest request) {
 		Utilisateur testUser=laReservation.getUtilisateur();
 		if(testUser==null) {
@@ -74,7 +75,7 @@ public class ReservationController {
 	public String updateForm(@PathVariable("topoId") int topoId, @RequestParam("resaId") int resaId, Model theModel) {
 		Reservation laReservation=reservationService.getReservation(resaId);
 		theModel.addAttribute("laReservation",laReservation);
-		return "reservation-form2";
+		return "reservation-form";
 	};
 
 	@RequestMapping(value = "{topoId}/reservations/delete", method = RequestMethod.GET)

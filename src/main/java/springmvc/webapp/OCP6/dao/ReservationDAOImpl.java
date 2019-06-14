@@ -42,7 +42,8 @@ public class ReservationDAOImpl implements ReservationDAO {
 	public void saveOrUpdateResa(Reservation laReservation, int topoId) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Topo leTopo=topoService.getTopo(topoId);
-		leTopo.setStatut("indisponible");
+		if(laReservation.getStatut().equals("acceptee")) {
+		leTopo.setStatut("indisponible");}
 		laReservation.setTopo(leTopo);
 		currentSession.saveOrUpdate(laReservation);
 
