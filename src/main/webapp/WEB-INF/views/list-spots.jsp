@@ -67,12 +67,12 @@
 						<label for="tagged"></label> <select class="form-control"
 							name="tagged">
 							<option value="" selected disabled>Spot tagged?</option>
-							<option value="TRUE">oui</option>
-							<option value="FALSE">non</option>
+							<option value="TRUE">VRAI</option>
+							<option value="FALSE">FAUX</option>
 						</select> <br> <select class="form-control" name="voieEquipee">
 							<option value="" selected disabled>Voie Equipee?</option>
-							<option value="TRUE">oui</option>
-							<option value="FALSE">non</option>
+							<option value="TRUE">VRAI</option>
+							<option value="FALSE">FAUX</option>
 						</select> <br> <input name="lieu" class="form-control"
 							placeholder="lieu" /> <br> <input name="nbrSecteurs"
 							class="form-control" placeholder="nombre secteurs" /> <br>
@@ -129,8 +129,8 @@
 						<td>${tempSpot.description}</td>
 						<td>${tempSpot.lieu}</td>
 						<td>${tempSpot.nbrSecteurs}</td>
-						<td>${tempSpot.tagged}</td>
-						<td>${tempSpot.voieEquipee}</td>
+						<td>${tempSpot.tagged == true ? "VRAI" : "FAUX"}</td>
+						<td>${tempSpot.voieEquipee == true ? "VRAI" : "FAUX"}</td>
 						<td>${tempSpot.utilisateur.userId}</td>
 
 						<td><a href="${detailsLink}">Détails</a></td>

@@ -62,37 +62,43 @@
 						<label for="voieEquipee" class="col-md-3 control-label">voie
 							equipee</label>
 						<div class="col-md-9">
-							<form:input path="voieEquipee" cssClass="form-control" />
+							<form:select path="voieEquipee" cssClass="form-control">
+								<form:option value="TRUE">VRAI</form:option>
+								<form:option value="FALSE">FAUX</form:option>
+							</form:select>
 						</div>
 					</div>
-					<!-- 					<div class="form-group"> -->
-					<!-- 						<label for="dateAjout" class="col-md-3 control-label">date Ajout</label> -->
-					<!-- 						<div class="col-md-9"> -->
-					<%-- 							<form:input path="dateAjout" cssClass="form-control" /> --%>
-					<!-- 						</div> -->
-					<!-- 					</div> -->
-					<c:if test="${sessionScope.user != 'ADMIN'}" var="variable">
 
+					<c:if test="${sessionScope.user != 'ADMIN'}" var="variable">
 						<div class="form-group">
-							<label for="tagged" class="col-md-3 control-label">label
-								tagged</label>
-							<div class="col-md-9">
-								<form:input path="tagged" value="FALSE" readonly="true"
-									cssClass="form-control" />
-							</div>
+
+						<label for="tagged" class="col-md-3 control-label">label tagged</label>
+						<div class="col-md-9">
+							<form:select path="tagged" 
+								cssClass="form-control">
+								<form:option value="FALSE">FAUX</form:option>
+							</form:select>
+						</div>
 						</div>
 					</c:if>
-
+					
 
 					<c:if test="${sessionScope.user == 'ADMIN'}" var="variable">
 						<div class="form-group">
 							<label for="tagged" class="col-md-3 control-label">label
 								tagged</label>
 							<div class="col-md-9">
-								<form:input path="tagged" cssClass="form-control" />
+								<form:select path="tagged" cssClass="form-control">
+									<form:option value="TRUE">VRAI</form:option>
+									<form:option value="FALSE">FAUX</form:option>
+								</form:select>
 							</div>
 						</div>
 					</c:if>
+					<br>
+
+
+
 					<div class="form-group">
 						<div class="col-md-offset-3 col-md-9">
 							<form:button cssClass="btn btn-primary">Submit</form:button>
