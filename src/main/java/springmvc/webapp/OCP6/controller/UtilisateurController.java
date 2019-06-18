@@ -19,7 +19,7 @@ import springmvc.webapp.OCP6.service.UtilisateurService;
 public class UtilisateurController {
 	@Autowired
 	private UtilisateurService utilisateurService;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
 		return "index";
@@ -28,48 +28,47 @@ public class UtilisateurController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String listSpots(@RequestParam("userId") String userId, @RequestParam("password") String password,
 			HttpSession session, ModelMap theModelMap) {
-		Utilisateur registredUserId=utilisateurService.getUtilisateur(userId);
+		Utilisateur registredUserId = utilisateurService.getUtilisateur(userId);
 		try {
-		String registredID=registredUserId.getUserId();
-		String registredPWD=registredUserId.getPassword();
-		registredUserId.getPassword();
-		if (userId.equalsIgnoreCase(registredID) && password.equalsIgnoreCase(registredPWD)) {
-			session.setAttribute("user", userId);
-			session.setAttribute("theUser", registredUserId);
+			String registredID = registredUserId.getUserId();
+			String registredPWD = registredUserId.getPassword();
+			registredUserId.getPassword();
+			if (userId.equalsIgnoreCase(registredID) && password.equalsIgnoreCase(registredPWD)) {
+				session.setAttribute("user", userId);
+				session.setAttribute("theUser", registredUserId);
 
-			return "redirect:/spots/list";
-		} else {
-			theModelMap.put("error", "Please check Id & password");
-			return "index";
+				return "redirect:/spots/list";
+			} else {
+				theModelMap.put("error", "Please check Id & password");
+				return "index";
 
-		}
-		
+			}
+
 		} catch (NullPointerException e) {
 			theModelMap.put("error", "Please register account first");
 
-		};
-		
+		}
+		;
+
 		return "index";
 
-
-		
-
 	}
+
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		session.removeAttribute("theUser");
-		session.removeAttribute("user");
+		session.invalidate();
 
 		return "redirect:../account";
-		
+
 	}
+
 	@RequestMapping(value = "registrationForm", method = RequestMethod.GET)
 	public String registrationForm(Model theModel) {
 		Utilisateur utilisateur = new Utilisateur();
 		theModel.addAttribute("utilisateur", utilisateur);
 		return "userRegistration-form";
 	}
-	
+
 	@RequestMapping(value = "saveUser", method = RequestMethod.POST)
 	public String register(@ModelAttribute("utilisateur") Utilisateur utilisateur) {
 		utilisateurService.saveUtilisateur(utilisateur);

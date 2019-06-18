@@ -32,7 +32,7 @@ public class ReservationController {
 
 	@RequestMapping(value = "reservations/userlist", method = RequestMethod.GET)
 	public String userListResa(Model theModel, HttpServletRequest request) {
-		Utilisateur loggedUser = (Utilisateur) request.getSession().getAttribute("theUser");
+		Utilisateur loggedUser = (Utilisateur) request.getSession(false).getAttribute("theUser");
 		List<Reservation> userResaList = reservationService.getUserReservations(loggedUser.getUserId());
 		theModel.addAttribute("userResa", userResaList);
 		return "resa-userlist";

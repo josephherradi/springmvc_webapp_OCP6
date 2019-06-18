@@ -94,7 +94,7 @@ public class SpotDAOImpl implements SpotDAO{
 
 	@Override
 	public List<Spot> userSpots(HttpServletRequest request) {
-			Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");		
+			Utilisateur loggedUser=(Utilisateur)request.getSession(false).getAttribute("theUser");		
 			Session currentSession = sessionFactory.getCurrentSession();
 			String query="select s from Spot s where s.utilisateur=:theloggedUser";
 			Query<Spot> queryRes = currentSession.createQuery(query,Spot.class);

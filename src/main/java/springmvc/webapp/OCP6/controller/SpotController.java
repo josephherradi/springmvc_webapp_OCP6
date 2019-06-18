@@ -81,7 +81,7 @@ public class SpotController {
 	}
 	
 	@RequestMapping(value = "mylist", method = RequestMethod.GET)
-	public String userlistSpots(Model theModel,HttpServletRequest request,HttpSession session) {
+	public String userlistSpots(Model theModel,HttpServletRequest request,HttpSession session) {		
 		List<Spot> theuserSpots = spotService.userSpots(request);
 		theModel.addAttribute("theuserSpots", theuserSpots);
 		return "user-spots";
