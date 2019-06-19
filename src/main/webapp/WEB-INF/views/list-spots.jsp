@@ -18,7 +18,7 @@
 
 
 
-		<div class="col-md-offset-2 col-md-9">
+		<div class="col-md-offset-1 col-md-11">
 			<div style="text-align: right">
 				<a href="${pageContext.request.contextPath}/account/logout"
 					class="button medium hpbottom">Se déconnecter</a>
@@ -94,6 +94,7 @@
 			<br> <br>
 			<table class="table table-striped table-bordered">
 				<tr>
+					<th>date ajout</th>
 					<th>name</th>
 					<th>description</th>
 					<th>lieu</th>
@@ -125,6 +126,7 @@
 						value="/spots/${tempSpot.spotId}/commentaires/list">
 					</c:url>
 					<tr>
+						<td>${tempSpot.dateAjout}</td>
 						<td>${tempSpot.spotName}</td>
 						<td>${tempSpot.description}</td>
 						<td>${tempSpot.lieu}</td>

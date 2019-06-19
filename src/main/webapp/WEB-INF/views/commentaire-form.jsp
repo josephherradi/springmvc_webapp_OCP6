@@ -29,6 +29,8 @@
 					<h2>Commentaire</h2>
 
 					<form:hidden path="commentId" />
+					<form:hidden path="date" />
+					
 
 					<div class="form-group">
 						<label for="contenu" class="col-md-3 control-label">Poster un commentaire</label>

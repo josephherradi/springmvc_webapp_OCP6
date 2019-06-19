@@ -1,5 +1,6 @@
 package springmvc.webapp.OCP6.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,10 +42,10 @@ public class CommentaireController {
 	}
 	
 	@RequestMapping(value="{spotId}/commentaires/saveForm",method= RequestMethod.POST)
-	public String saveCommentaire(@PathVariable("spotId") int spotId,@ModelAttribute("theComment") Commentaire theComment,HttpSession session,HttpServletRequest request) {
-		
+	public String saveCommentaire(@PathVariable("spotId") int spotId,@ModelAttribute("theComment") Commentaire theComment,BindingResult result,HttpSession session,HttpServletRequest request) {
+		Date date = new Date();
+		theComment.setDate(date);
 	    Utilisateur loggedUser=(Utilisateur)request.getSession().getAttribute("theUser");
-
 		theComment.setUtilisateur(loggedUser);
 		commentaireService.saveComment(theComment, spotId);
 		return "redirect:list";

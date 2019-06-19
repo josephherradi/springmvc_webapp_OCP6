@@ -49,7 +49,7 @@ public class Spot {
 	@Column(name="voie_equipee")
 	private Boolean voieEquipee;
 	
-	@Column(name="date_ajout")
+	@Column(name="date_ajout",updatable=false)
 	private Date dateAjout;
 	
 	@Column(name="tagged")

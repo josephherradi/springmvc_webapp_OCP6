@@ -31,7 +31,7 @@ public class Commentaire {
 	private int commentId;
 	
 	
-	@Column(name="date")
+	@Column(name="date",updatable=false)
 	private Date date;
 	
 	@Column(name="contenu")

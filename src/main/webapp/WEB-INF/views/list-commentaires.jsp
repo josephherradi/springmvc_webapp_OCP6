@@ -14,8 +14,7 @@
 		<div class="col-md-offset-1 col-md-10">
 			<br>
 			<button type="button" name="back" onclick="history.back()">back</button>
-			<br>
-			<br>
+			<br> <br>
 			<p>
 				<c:if test="${sessionScope.user !=null}" var="variable">
 
@@ -30,6 +29,8 @@
 				<tr>
 					<th>Commentaire</th>
 					<th>utilisateur</th>
+					<th>date</th>
+
 
 
 				</tr>
@@ -48,6 +49,8 @@
 					<tr>
 						<td>${tempComment.contenu}</td>
 						<td>${tempComment.utilisateur.userId}</td>
+						<td>${tempComment.date}</td>
+
 						<c:if
 							test="${sessionScope.user == 'ADMIN' && sessionScope.user!=null}"
 							var="variable">

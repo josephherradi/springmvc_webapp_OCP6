@@ -29,6 +29,8 @@
 					<h2>Spot</h2>
 
 					<form:hidden path="spotId" />
+					<form:hidden path="dateAjout" />
+
 
 					<div class="form-group">
 						<label for="spotName" class="col-md-3 control-label">Spot
@@ -72,16 +74,16 @@
 					<c:if test="${sessionScope.user != 'ADMIN'}" var="variable">
 						<div class="form-group">
 
-						<label for="tagged" class="col-md-3 control-label">label tagged</label>
-						<div class="col-md-9">
-							<form:select path="tagged" 
-								cssClass="form-control">
-								<form:option value="FALSE">FAUX</form:option>
-							</form:select>
-						</div>
+							<label for="tagged" class="col-md-3 control-label">label
+								tagged</label>
+							<div class="col-md-9">
+								<form:select path="tagged" cssClass="form-control">
+									<form:option value="FALSE">FAUX</form:option>
+								</form:select>
+							</div>
 						</div>
 					</c:if>
-					
+
 
 					<c:if test="${sessionScope.user == 'ADMIN'}" var="variable">
 						<div class="form-group">
