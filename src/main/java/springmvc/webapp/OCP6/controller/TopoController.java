@@ -59,7 +59,7 @@ public class TopoController {
 		return "redirect:mylist";
 	}
 	
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "toposlist", method = RequestMethod.GET)
 	public String listTopos(Model theModel, HttpServletRequest request, HttpSession session) {
 		String userId = (String) request.getSession().getAttribute("user");
 		List<Topo> lesTopos = topoService.getTopos(userId);

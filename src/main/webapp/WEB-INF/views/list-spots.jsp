@@ -37,7 +37,7 @@
 			<br>
 
 			<div style="text-align: left">
-				<a href="${pageContext.request.contextPath}/topos/list"
+				<a href="${pageContext.request.contextPath}/topos/toposlist"
 					class="button medium hpbottom">Consulter liste des topos</a>
 			</div>
 			<br>
