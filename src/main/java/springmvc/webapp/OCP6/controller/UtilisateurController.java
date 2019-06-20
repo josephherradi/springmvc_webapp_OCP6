@@ -1,5 +1,8 @@
 package springmvc.webapp.OCP6.controller;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,19 @@ import springmvc.webapp.OCP6.service.UtilisateurService;
 public class UtilisateurController {
 	@Autowired
 	private UtilisateurService utilisateurService;
-
+	
+	public static String encrypt(String source) {
+		String md5 = null;
+		try {
+		MessageDigest mdEnc = MessageDigest.getInstance("MD5"); // Encryption algorithm
+		mdEnc.update(source.getBytes(), 0, source.length());
+		md5 = new BigInteger(1, mdEnc.digest()).toString(16); // Encrypted string
+		} catch (Exception ex) {
+		return null;
+		}
+		return md5;
+		}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
 		return "index";
@@ -32,8 +47,7 @@ public class UtilisateurController {
 		try {
 			String registredID = registredUserId.getUserId();
 			String registredPWD = registredUserId.getPassword();
-			registredUserId.getPassword();
-			if (userId.equalsIgnoreCase(registredID) && password.equalsIgnoreCase(registredPWD)) {
+			if (userId.equalsIgnoreCase(registredID) && encrypt(password).equalsIgnoreCase(registredPWD)) {
 				session.setAttribute("user", userId);
 				session.setAttribute("theUser", registredUserId);
 
@@ -71,6 +85,7 @@ public class UtilisateurController {
 
 	@RequestMapping(value = "saveUser", method = RequestMethod.POST)
 	public String register(@ModelAttribute("utilisateur") Utilisateur utilisateur) {
+		utilisateur.setPassword(encrypt(utilisateur.getPassword()));
 		utilisateurService.saveUtilisateur(utilisateur);
 		return "redirect:../account";
 	}
