@@ -37,6 +37,12 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="date" class="col-md-3 control-label">date parution (YYYY-MM-DD)</label>
+						<div class="col-md-9">
+							<form:input path="date" cssClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="description" class="col-md-3 control-label">description</label>
 						<div class="col-md-9">
 							<form:input path="description" cssClass="form-control" />
@@ -54,8 +60,8 @@
 						<label for="statut" class="col-md-3 control-label">statut</label>
 						<div class="col-md-9">
 							<form:select path="statut" cssClass="form-control">
-							<form:option value="disponible">disponible</form:option>
-							<form:option value="indisponible">indisponible</form:option>
+								<form:option value="disponible">disponible</form:option>
+								<form:option value="indisponible">indisponible</form:option>
 							</form:select>
 						</div>
 					</div>

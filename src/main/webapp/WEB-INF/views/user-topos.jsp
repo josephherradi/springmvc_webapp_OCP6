@@ -18,8 +18,7 @@
 
 			</p>
 			<br>
-			<c:if test="${sessionScope.user !=null}"
-				var="variable">
+			<c:if test="${sessionScope.user !=null}" var="variable">
 
 				<input type="button" value="Add topo"
 					onclick="window.location.href='showForm'; return false;"
@@ -33,10 +32,11 @@
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th>nom</th>
+					<th>date ajout</th>
 					<th>description</th>
 					<th>lieu</th>
 					<th>statut</th>
-					
+
 
 
 
@@ -56,13 +56,12 @@
 
 					<tr>
 						<td>${tempTopo.nom}</td>
+						<td>${tempTopo.date}</td>
 						<td>${tempTopo.description}</td>
 						<td>${tempTopo.lieu}</td>
 						<td>${tempTopo.statut}</td>
-						
-						<c:if
-							test="${sessionScope.user!=null}"
-							var="variable">
+
+						<c:if test="${sessionScope.user!=null}" var="variable">
 
 							<td><a href="${updateLink}">Update</a>|<a
 								href="${deleteLink}"

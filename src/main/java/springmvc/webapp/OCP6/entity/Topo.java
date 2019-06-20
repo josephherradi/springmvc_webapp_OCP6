@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -39,6 +40,7 @@ public class Topo {
 	@Column(name="lieu")
 	private String lieu;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="date_parution")
 	private Date date;
 	

@@ -23,6 +23,7 @@
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th>nom</th>
+					<th>date ajout</th>
 					<th>description</th>
 					<th>lieu</th>
 					<th>statut</th>
@@ -37,13 +38,15 @@
 
 				<c:forEach var="tempTopo" items="${topos}">
 
-					<c:url var="reservationLink" value="${tempTopo.topoId}/reservations/showResaForm">
+					<c:url var="reservationLink"
+						value="${tempTopo.topoId}/reservations/showResaForm">
 					</c:url>
 
 
 
 					<tr>
 						<td>${tempTopo.nom}</td>
+						<td>${tempTopo.date}</td>
 						<td>${tempTopo.description}</td>
 						<td>${tempTopo.lieu}</td>
 						<td>${tempTopo.statut}</td>
@@ -52,8 +55,7 @@
 
 						<c:if test="${tempTopo.statut=='disponible'}" var="variable">
 
-						 							<td><a href="${reservationLink}">Réserver</a>
-							</td>
+							<td><a href="${reservationLink}">Réserver</a></td>
 						</c:if>
 
 
