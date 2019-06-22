@@ -8,8 +8,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Spot lists</title>
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
@@ -19,11 +20,22 @@
 
 
 		<div class="col-md-offset-2 col-md-9">
-			
+			<br>
+			<p>
+				<a href="${pageContext.request.contextPath}/spots/list"> <span
+					class="glyphicon glyphicon-home"></span>
+				</a>
+			</p>
+			<br>
+			<p>
+				<button type="button" name="back" onclick="history.back()">back</button>
 
-			
+			</p>
+			<br>
+
+
 			<h2>Liste des spots</h2>
-			
+
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th>name</th>
@@ -38,8 +50,7 @@
 
 				</tr>
 
-				<c:forEach var="tempSpot"
-					items="${ theuserSpots}">
+				<c:forEach var="tempSpot" items="${ theuserSpots}">
 
 					<c:url var="updateLink" value="/spots/updateForm">
 						<c:param name="spotId" value="${tempSpot.spotId}" />

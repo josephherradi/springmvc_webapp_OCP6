@@ -6,12 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>topos mylist</title>
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
+			<br>
+			<p>
+				<a href="${pageContext.request.contextPath}/spots/list"> <span
+					class="glyphicon glyphicon-home"></span>
+				</a>
+			</p>
 			<br>
 			<p>
 				<button type="button" name="back" onclick="history.back()">back</button>
