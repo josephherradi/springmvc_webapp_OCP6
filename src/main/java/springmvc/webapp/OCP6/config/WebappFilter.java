@@ -30,7 +30,7 @@ public class WebappFilter implements Filter {
 			"/account/logout", "/account/registrationForm", "/list", "/spots/searchSpots");
 
 	private static final Collection<String> ALLOWED_PATHS_USERLOGGED = Arrays.asList("showForm",
-			"updateForm", "delete", "saveForm", "mylist","toposlist", "/voies/list","userlist","requestlist","saveOrUpdate");
+			"updateForm", "delete", "saveForm", "mylist","toposlist", "/voies/list","userlist","requestlist","saveOrUpdate","showResaForm");
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)

@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>voie lists</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -23,6 +24,7 @@
 				<button type="button" name="back" onclick="history.back()">back</button>
 
 			</p>
+			<br>
 			<c:if test="${sessionScope.user == spot.utilisateur.userId}"
 				var="variable">
 

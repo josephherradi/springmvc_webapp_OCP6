@@ -64,7 +64,10 @@ public class Spot {
 	@OneToMany(targetEntity=Voie.class, mappedBy="spot",cascade=CascadeType.ALL)
 	@ElementCollection(targetClass=Voie.class)
 	public List<Voie> voies;
-		
+	
+	@OneToMany(targetEntity=Commentaire.class, mappedBy="spot",cascade=CascadeType.ALL)
+	@ElementCollection(targetClass=Commentaire.class)
+	public List<Commentaire> commentaires;
 	
 	public Spot(){
 		
