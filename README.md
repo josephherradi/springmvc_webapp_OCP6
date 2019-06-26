@@ -1,7 +1,7 @@
 # Projet Spring 5 /Hibernate 5 creation de site autour de l'escalade
 
 ## Technologies utilisées:
-        •       JDK 8
+    •       JDK 8
 	•	Spring MVC - 5.1.0 RELEASE
 	•	Hibernate - 5.2.17.Final
 	•	Maven - 3.5.1
