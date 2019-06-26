@@ -14,7 +14,7 @@
 
 ## Build
 ```
-maven clean install
+mvn clean install
 ```
 
 ## Deployer  war
