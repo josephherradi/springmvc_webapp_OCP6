@@ -48,6 +48,10 @@
 
 
 				</form>
+				<div style="text-align: left">
+				<a href="${pageContext.request.contextPath}/account/registrationForm"
+					class="button medium hpbottom">Nouvel utilisateur?</a>
+			</div>
 			</div>
 		</div>
 	</div>
